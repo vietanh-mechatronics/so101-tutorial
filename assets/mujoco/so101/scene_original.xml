@@ -1,0 +1,77 @@
+<mujoco model="scene">
+    <include file="robot_original.xml" />
+
+    <option timestep="0.001" integrator="implicitfast" iterations="200" tolerance="1e-10" />
+
+    <default>
+        <default class="task_collision">
+            <geom contype="1" conaffinity="1" condim="4" solref="0.01 1" friction="1.0 0.01 0.001"
+                solimp="0.999 0.9999 0.00001" />
+        </default>
+    </default>
+
+    <visual>
+        <headlight diffuse="0.5 0.5 0.5" ambient="0.24 0.24 0.24" specular="0 0 0" />
+        <rgba haze="0.15 0.25 0.35 1" />
+        <global azimuth="160" elevation="-20" />
+    </visual>
+
+    <asset>
+        <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512"
+            height="3072" />
+        <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4"
+            rgb2="0.1 0.2 0.3"
+            markrgb="0.8 0.8 0.8" width="300" height="300" />
+        <material name="groundplane" rgba="0.46 0.48 0.44 1" reflectance="0.08" />
+        <material name="box_white_matte" rgba="0.92 0.94 0.90 1" reflectance="0.08" />
+        <material name="box_red_matte" rgba="0.25 1 0.25 1" reflectance="0.08" />
+    </asset>
+
+    <worldbody>
+        <light pos="0 0 3.5" dir="0 0 -1" directional="true" />
+        <camera name="top_cam" pos="0.22 0 0.54" xyaxes="0 0.999391 -0.0349 -1 0 0" fovy="55" />
+        <camera name="front_cam" pos="0.65 0.135 0.225" xyaxes="-0.0754791 0.996195 -0.0435779 -0.5 0 0.866025" fovy="55" />
+        <geom name="floor" class="task_collision" size="0 0 0.05" pos="0 0 0" type="plane" material="groundplane"
+            friction="0.03 0.03 0.001" />
+
+
+
+
+      <body name="container_box" pos="0.24 0.06 0">
+            <geom name="container_box_bottom" type="box" pos="0 0 0.0005"
+                size="0.0475 0.0475 0.0005" mass="0.02"
+                material="box_white_matte" contype="1" conaffinity="1" condim="4"
+                friction="1.2 0.04 0.001" solref="0.002 1" solimp="0.9 0.95 0.001"
+                margin="0.0005"/>
+            <geom name="container_box_wall_pos_x" type="box" pos="0.047 0 0.0165"
+                size="0.0005 0.0475 0.0155" mass="0.015"
+                material="box_white_matte" contype="1" conaffinity="1" condim="4"
+                friction="1.2 0.04 0.001" solref="0.002 1" solimp="0.9 0.95 0.001"
+                margin="0.0005"/>
+            <geom name="container_box_wall_neg_x" type="box" pos="-0.047 0 0.0165"
+                size="0.0005 0.0475 0.0155" mass="0.015"
+                material="box_white_matte" contype="1" conaffinity="1" condim="4"
+                friction="1.2 0.04 0.001" solref="0.002 1" solimp="0.9 0.95 0.001"
+                margin="0.0005"/>
+            <geom name="container_box_wall_pos_y" type="box" pos="0 0.047 0.0165"
+                size="0.0465 0.0005 0.0155" mass="0.015"
+                material="box_white_matte" contype="1" conaffinity="1" condim="4"
+                friction="1.2 0.04 0.001" solref="0.002 1" solimp="0.9 0.95 0.001"
+                margin="0.0005"/>
+            <geom name="container_box_wall_neg_y" type="box" pos="0 -0.047 0.0165"
+                size="0.0465 0.0005 0.0155" mass="0.015"
+                material="box_white_matte" contype="1" conaffinity="1" condim="4"
+                friction="1.2 0.04 0.001" solref="0.002 1" solimp="0.9 0.95 0.001"
+                margin="0.0005"/>
+        </body>
+
+        <body name="pick_box" pos="0.18 -0.07 0.011">
+            <freejoint/>
+            <geom name="pick_box_geom" type="box"
+                size="0.020 0.0125 0.0125" mass="0.03"
+                material="box_red_matte" contype="1" conaffinity="1" condim="4"
+                friction="1.2 0.4 0.001" solref="0.02 1" solimp="0.9 0.95 0.001"
+                margin="0.0005"/>
+        </body>
+    </worldbody>
+</mujoco>

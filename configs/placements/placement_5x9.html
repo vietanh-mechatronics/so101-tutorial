@@ -1,0 +1,2082 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bảng chọn matrix 5x9 theo rule real</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 28px;
+      color: #222;
+      line-height: 1.5;
+    }
+    h1 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+    .note {
+      margin: 6px 0 18px;
+      font-size: 14px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 960px;
+      margin-top: 12px;
+      font-size: 14px;
+    }
+    th, td {
+      border: 1px solid #444;
+      padding: 7px 9px;
+      text-align: center;
+    }
+    th {
+      background: #f2f2f2;
+      font-weight: 700;
+    }
+    td:nth-child(2), td:nth-child(3) {
+      font-weight: 700;
+      background: #fafafa;
+    }
+    pre {
+      max-width: 960px;
+      background: #f7f7f7;
+      border: 1px solid #ddd;
+      padding: 12px;
+      overflow-x: auto;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Bảng chọn matrix 5x9 theo rule real</h1>
+
+  <div class="note">
+    Bảng này sinh từ <code>real_dataset_setup_plan.py</code>: cùng vùng reachable 5x9,
+    cùng ô bị loại, không trùng <code>object_cell</code> và <code>container_cell</code>,
+    và profile khoảng cách <code>spaced</code>
+    (minimum cell distance = 2.0).
+  </div>
+
+  <table id="selection-table">
+    <thead>
+      <tr>
+        <th>Episode</th>
+        <th>OBJECT</th>
+        <th>BOX</th>
+        <th>Relation</th>
+        <th>Distance</th>
+        <th>Row delta</th>
+        <th>Col delta</th>
+      </tr>
+    </thead>
+    <tbody>
+          <tr><td>0</td><td>a2</td><td>c5</td><td>vua</td><td>3.606</td><td>2</td><td>3</td></tr>
+          <tr><td>1</td><td>b6</td><td>b8</td><td>phai</td><td>2.000</td><td>0</td><td>2</td></tr>
+          <tr><td>2</td><td>a1</td><td>b6</td><td>phai</td><td>5.099</td><td>1</td><td>5</td></tr>
+          <tr><td>3</td><td>d5</td><td>b7</td><td>vua</td><td>2.828</td><td>-2</td><td>2</td></tr>
+          <tr><td>4</td><td>d6</td><td>c4</td><td>gan</td><td>2.236</td><td>-1</td><td>-2</td></tr>
+          <tr><td>5</td><td>c4</td><td>a1</td><td>vua</td><td>3.606</td><td>-2</td><td>-3</td></tr>
+          <tr><td>6</td><td>c3</td><td>d6</td><td>phai</td><td>3.162</td><td>1</td><td>3</td></tr>
+          <tr><td>7</td><td>b8</td><td>a2</td><td>trai</td><td>6.083</td><td>-1</td><td>-6</td></tr>
+          <tr><td>8</td><td>a7</td><td>c6</td><td>gan</td><td>2.236</td><td>2</td><td>-1</td></tr>
+          <tr><td>9</td><td>b2</td><td>c7</td><td>phai</td><td>5.099</td><td>1</td><td>5</td></tr>
+          <tr><td>10</td><td>d4</td><td>a8</td><td>xa</td><td>5.000</td><td>-3</td><td>4</td></tr>
+          <tr><td>11</td><td>b3</td><td>d4</td><td>duoi</td><td>2.236</td><td>2</td><td>1</td></tr>
+          <tr><td>12</td><td>a8</td><td>b2</td><td>cheo_xa</td><td>6.083</td><td>1</td><td>-6</td></tr>
+          <tr><td>13</td><td>c5</td><td>b3</td><td>cheo_gan</td><td>2.236</td><td>-1</td><td>-2</td></tr>
+          <tr><td>14</td><td>c6</td><td>a9</td><td>vua</td><td>3.606</td><td>-2</td><td>3</td></tr>
+          <tr><td>15</td><td>c7</td><td>a7</td><td>gan</td><td>2.000</td><td>-2</td><td>0</td></tr>
+          <tr><td>16</td><td>b7</td><td>d6</td><td>gan</td><td>2.236</td><td>2</td><td>-1</td></tr>
+          <tr><td>17</td><td>a9</td><td>a7</td><td>gan</td><td>2.000</td><td>0</td><td>-2</td></tr>
+          <tr><td>18</td><td>a2</td><td>c3</td><td>duoi</td><td>2.236</td><td>2</td><td>1</td></tr>
+          <tr><td>19</td><td>b6</td><td>d5</td><td>duoi</td><td>2.236</td><td>2</td><td>-1</td></tr>
+          <tr><td>20</td><td>c3</td><td>d5</td><td>gan</td><td>2.236</td><td>1</td><td>2</td></tr>
+          <tr><td>21</td><td>a8</td><td>b3</td><td>xa</td><td>5.099</td><td>1</td><td>-5</td></tr>
+          <tr><td>22</td><td>b7</td><td>a2</td><td>trai</td><td>5.099</td><td>-1</td><td>-5</td></tr>
+          <tr><td>23</td><td>d4</td><td>c7</td><td>cheo_vua</td><td>3.162</td><td>-1</td><td>3</td></tr>
+          <tr><td>24</td><td>a1</td><td>d4</td><td>xa</td><td>4.243</td><td>3</td><td>3</td></tr>
+          <tr><td>25</td><td>b3</td><td>a9</td><td>random</td><td>6.083</td><td>-1</td><td>6</td></tr>
+          <tr><td>26</td><td>d5</td><td>b8</td><td>cheo_vua</td><td>3.606</td><td>-2</td><td>3</td></tr>
+          <tr><td>27</td><td>b8</td><td>a1</td><td>xa</td><td>7.071</td><td>-1</td><td>-7</td></tr>
+          <tr><td>28</td><td>c4</td><td>b6</td><td>gan</td><td>2.236</td><td>-1</td><td>2</td></tr>
+          <tr><td>29</td><td>b2</td><td>c4</td><td>gan</td><td>2.236</td><td>1</td><td>2</td></tr>
+          <tr><td>30</td><td>a7</td><td>c3</td><td>xa</td><td>4.472</td><td>2</td><td>-4</td></tr>
+          <tr><td>31</td><td>a9</td><td>c5</td><td>xa</td><td>4.472</td><td>2</td><td>-4</td></tr>
+          <tr><td>32</td><td>c5</td><td>a8</td><td>vua</td><td>3.606</td><td>-2</td><td>3</td></tr>
+          <tr><td>33</td><td>b6</td><td>d6</td><td>duoi</td><td>2.000</td><td>2</td><td>0</td></tr>
+          <tr><td>34</td><td>c6</td><td>b2</td><td>trai</td><td>4.123</td><td>-1</td><td>-4</td></tr>
+          <tr><td>35</td><td>d6</td><td>b7</td><td>cheo_gan</td><td>2.236</td><td>-2</td><td>1</td></tr>
+          <tr><td>36</td><td>c7</td><td>b2</td><td>cheo_xa</td><td>5.099</td><td>-1</td><td>-5</td></tr>
+          <tr><td>37</td><td>c3</td><td>c6</td><td>vua</td><td>3.000</td><td>0</td><td>3</td></tr>
+          <tr><td>38</td><td>a8</td><td>c6</td><td>vua</td><td>2.828</td><td>2</td><td>-2</td></tr>
+          <tr><td>39</td><td>c6</td><td>b3</td><td>trai</td><td>3.162</td><td>-1</td><td>-3</td></tr>
+          <tr><td>40</td><td>d6</td><td>b6</td><td>tren</td><td>2.000</td><td>-2</td><td>0</td></tr>
+          <tr><td>41</td><td>c7</td><td>a8</td><td>tren</td><td>2.236</td><td>-2</td><td>1</td></tr>
+          <tr><td>42</td><td>a9</td><td>b7</td><td>cheo_gan</td><td>2.236</td><td>1</td><td>-2</td></tr>
+          <tr><td>43</td><td>d5</td><td>a1</td><td>cheo_xa</td><td>5.000</td><td>-3</td><td>-4</td></tr>
+          <tr><td>44</td><td>b2</td><td>c5</td><td>vua</td><td>3.162</td><td>1</td><td>3</td></tr>
+          <tr><td>45</td><td>a1</td><td>c7</td><td>xa</td><td>6.325</td><td>2</td><td>6</td></tr>
+          <tr><td>46</td><td>b7</td><td>a9</td><td>gan</td><td>2.236</td><td>-1</td><td>2</td></tr>
+          <tr><td>47</td><td>b3</td><td>a7</td><td>phai</td><td>4.123</td><td>-1</td><td>4</td></tr>
+          <tr><td>48</td><td>d4</td><td>b3</td><td>tren</td><td>2.236</td><td>-2</td><td>-1</td></tr>
+          <tr><td>49</td><td>c3</td><td>a2</td><td>tren</td><td>2.236</td><td>-2</td><td>-1</td></tr>
+          <tr><td>50</td><td>a2</td><td>b8</td><td>xa</td><td>6.083</td><td>1</td><td>6</td></tr>
+          <tr><td>51</td><td>b8</td><td>d5</td><td>vua</td><td>3.606</td><td>2</td><td>-3</td></tr>
+          <tr><td>52</td><td>c5</td><td>c3</td><td>trai</td><td>2.000</td><td>0</td><td>-2</td></tr>
+          <tr><td>53</td><td>a7</td><td>d4</td><td>xa</td><td>4.243</td><td>3</td><td>-3</td></tr>
+          <tr><td>54</td><td>a8</td><td>c7</td><td>duoi</td><td>2.236</td><td>2</td><td>-1</td></tr>
+          <tr><td>55</td><td>d6</td><td>a7</td><td>tren</td><td>3.162</td><td>-3</td><td>1</td></tr>
+          <tr><td>56</td><td>c4</td><td>b2</td><td>trai</td><td>2.236</td><td>-1</td><td>-2</td></tr>
+          <tr><td>57</td><td>b6</td><td>c4</td><td>gan</td><td>2.236</td><td>1</td><td>-2</td></tr>
+          <tr><td>58</td><td>a7</td><td>d6</td><td>duoi</td><td>3.162</td><td>3</td><td>-1</td></tr>
+          <tr><td>59</td><td>d5</td><td>b6</td><td>tren</td><td>2.236</td><td>-2</td><td>1</td></tr>
+          <tr><td>60</td><td>c4</td><td>b7</td><td>vua</td><td>3.162</td><td>-1</td><td>3</td></tr>
+          <tr><td>61</td><td>c6</td><td>b8</td><td>phai</td><td>2.236</td><td>-1</td><td>2</td></tr>
+          <tr><td>62</td><td>b3</td><td>c6</td><td>phai</td><td>3.162</td><td>1</td><td>3</td></tr>
+          <tr><td>63</td><td>c6</td><td>a7</td><td>tren</td><td>2.236</td><td>-2</td><td>1</td></tr>
+          <tr><td>64</td><td>c7</td><td>a9</td><td>cheo_vua</td><td>2.828</td><td>-2</td><td>2</td></tr>
+          <tr><td>65</td><td>a9</td><td>d5</td><td>xa</td><td>5.000</td><td>3</td><td>-4</td></tr>
+          <tr><td>66</td><td>b7</td><td>c5</td><td>gan</td><td>2.236</td><td>1</td><td>-2</td></tr>
+          <tr><td>67</td><td>a2</td><td>a8</td><td>xa</td><td>6.000</td><td>0</td><td>6</td></tr>
+          <tr><td>68</td><td>d4</td><td>a2</td><td>vua</td><td>3.606</td><td>-3</td><td>-2</td></tr>
+          <tr><td>69</td><td>a7</td><td>c7</td><td>duoi</td><td>2.000</td><td>2</td><td>0</td></tr>
+          <tr><td>70</td><td>d6</td><td>b7</td><td>tren</td><td>2.236</td><td>-2</td><td>1</td></tr>
+          <tr><td>71</td><td>b8</td><td>c6</td><td>cheo_gan</td><td>2.236</td><td>1</td><td>-2</td></tr>
+          <tr><td>72</td><td>c5</td><td>a1</td><td>xa</td><td>4.472</td><td>-2</td><td>-4</td></tr>
+          <tr><td>73</td><td>b2</td><td>a8</td><td>xa</td><td>6.083</td><td>-1</td><td>6</td></tr>
+          <tr><td>74</td><td>a1</td><td>a9</td><td>phai</td><td>8.000</td><td>0</td><td>8</td></tr>
+          <tr><td>75</td><td>d5</td><td>c3</td><td>gan</td><td>2.236</td><td>-1</td><td>-2</td></tr>
+          <tr><td>76</td><td>c4</td><td>d6</td><td>phai</td><td>2.236</td><td>1</td><td>2</td></tr>
+          <tr><td>77</td><td>b7</td><td>c4</td><td>vua</td><td>3.162</td><td>1</td><td>-3</td></tr>
+          <tr><td>78</td><td>c7</td><td>d5</td><td>gan</td><td>2.236</td><td>1</td><td>-2</td></tr>
+          <tr><td>79</td><td>a8</td><td>d4</td><td>xa</td><td>5.000</td><td>3</td><td>-4</td></tr>
+          <tr><td>80</td><td>a2</td><td>c3</td><td>duoi</td><td>2.236</td><td>2</td><td>1</td></tr>
+          <tr><td>81</td><td>b6</td><td>a1</td><td>xa</td><td>5.099</td><td>-1</td><td>-5</td></tr>
+          <tr><td>82</td><td>b3</td><td>d4</td><td>duoi</td><td>2.236</td><td>2</td><td>1</td></tr>
+          <tr><td>83</td><td>c5</td><td>a2</td><td>vua</td><td>3.606</td><td>-2</td><td>-3</td></tr>
+          <tr><td>84</td><td>c3</td><td>b8</td><td>xa</td><td>5.099</td><td>-1</td><td>5</td></tr>
+          <tr><td>85</td><td>d4</td><td>b3</td><td>tren</td><td>2.236</td><td>-2</td><td>-1</td></tr>
+          <tr><td>86</td><td>a9</td><td>b6</td><td>cheo_vua</td><td>3.162</td><td>1</td><td>-3</td></tr>
+          <tr><td>87</td><td>b8</td><td>c4</td><td>vua</td><td>4.123</td><td>1</td><td>-4</td></tr>
+          <tr><td>88</td><td>a1</td><td>b3</td><td>gan</td><td>2.236</td><td>1</td><td>2</td></tr>
+          <tr><td>89</td><td>b2</td><td>b6</td><td>vua</td><td>4.000</td><td>0</td><td>4</td></tr>
+          <tr><td>90</td><td>b8</td><td>c5</td><td>vua</td><td>3.162</td><td>1</td><td>-3</td></tr>
+          <tr><td>91</td><td>a1</td><td>b8</td><td>phai</td><td>7.071</td><td>1</td><td>7</td></tr>
+          <tr><td>92</td><td>c5</td><td>b2</td><td>cheo_vua</td><td>3.162</td><td>-1</td><td>-3</td></tr>
+          <tr><td>93</td><td>c6</td><td>d4</td><td>gan</td><td>2.236</td><td>1</td><td>-2</td></tr>
+          <tr><td>94</td><td>b2</td><td>a7</td><td>xa</td><td>5.099</td><td>-1</td><td>5</td></tr>
+          <tr><td>95</td><td>d4</td><td>d6</td><td>gan</td><td>2.000</td><td>0</td><td>2</td></tr>
+          <tr><td>96</td><td>a7</td><td>a9</td><td>gan</td><td>2.000</td><td>0</td><td>2</td></tr>
+          <tr><td>97</td><td>b3</td><td>a1</td><td>random</td><td>2.236</td><td>-1</td><td>-2</td></tr>
+          <tr><td>98</td><td>a9</td><td>c4</td><td>cheo_xa</td><td>5.385</td><td>2</td><td>-5</td></tr>
+          <tr><td>99</td><td>b6</td><td>c3</td><td>trai</td><td>3.162</td><td>1</td><td>-3</td></tr>
+          <tr><td>100</td><td>c4</td><td>c7</td><td>vua</td><td>3.000</td><td>0</td><td>3</td></tr>
+          <tr><td>101</td><td>c3</td><td>b7</td><td>phai</td><td>4.123</td><td>-1</td><td>4</td></tr>
+          <tr><td>102</td><td>d6</td><td>b2</td><td>xa</td><td>4.472</td><td>-2</td><td>-4</td></tr>
+          <tr><td>103</td><td>c7</td><td>c5</td><td>gan</td><td>2.000</td><td>0</td><td>-2</td></tr>
+          <tr><td>104</td><td>d5</td><td>b6</td><td>tren</td><td>2.236</td><td>-2</td><td>1</td></tr>
+          <tr><td>105</td><td>a8</td><td>c7</td><td>duoi</td><td>2.236</td><td>2</td><td>-1</td></tr>
+          <tr><td>106</td><td>b7</td><td>b2</td><td>trai</td><td>5.000</td><td>0</td><td>-5</td></tr>
+          <tr><td>107</td><td>a2</td><td>c4</td><td>vua</td><td>2.828</td><td>2</td><td>2</td></tr>
+          <tr><td>108</td><td>b6</td><td>a8</td><td>gan</td><td>2.236</td><td>-1</td><td>2</td></tr>
+          <tr><td>109</td><td>b2</td><td>c6</td><td>phai</td><td>4.123</td><td>1</td><td>4</td></tr>
+          <tr><td>110</td><td>a7</td><td>d5</td><td>vua</td><td>3.606</td><td>3</td><td>-2</td></tr>
+          <tr><td>111</td><td>a9</td><td>a2</td><td>trai</td><td>7.000</td><td>0</td><td>-7</td></tr>
+          <tr><td>112</td><td>b7</td><td>b3</td><td>vua</td><td>4.000</td><td>0</td><td>-4</td></tr>
+          <tr><td>113</td><td>a1</td><td>c6</td><td>xa</td><td>5.385</td><td>2</td><td>5</td></tr>
+          <tr><td>114</td><td>d6</td><td>b8</td><td>cheo_vua</td><td>2.828</td><td>-2</td><td>2</td></tr>
+          <tr><td>115</td><td>d5</td><td>a9</td><td>xa</td><td>5.000</td><td>-3</td><td>4</td></tr>
+          <tr><td>116</td><td>a8</td><td>c5</td><td>vua</td><td>3.606</td><td>2</td><td>-3</td></tr>
+          <tr><td>117</td><td>c5</td><td>b7</td><td>cheo_gan</td><td>2.236</td><td>-1</td><td>2</td></tr>
+          <tr><td>118</td><td>b6</td><td>d6</td><td>duoi</td><td>2.000</td><td>2</td><td>0</td></tr>
+          <tr><td>119</td><td>c3</td><td>a2</td><td>tren</td><td>2.236</td><td>-2</td><td>-1</td></tr>
+          <tr><td>120</td><td>a2</td><td>d4</td><td>vua</td><td>3.606</td><td>3</td><td>2</td></tr>
+          <tr><td>121</td><td>c7</td><td>c3</td><td>trai</td><td>4.000</td><td>0</td><td>-4</td></tr>
+          <tr><td>122</td><td>b3</td><td>a8</td><td>phai</td><td>5.099</td><td>-1</td><td>5</td></tr>
+          <tr><td>123</td><td>c6</td><td>c4</td><td>gan</td><td>2.000</td><td>0</td><td>-2</td></tr>
+          <tr><td>124</td><td>d4</td><td>c6</td><td>cheo_gan</td><td>2.236</td><td>-1</td><td>2</td></tr>
+          <tr><td>125</td><td>c4</td><td>b8</td><td>phai</td><td>4.123</td><td>-1</td><td>4</td></tr>
+          <tr><td>126</td><td>c7</td><td>a7</td><td>tren</td><td>2.000</td><td>-2</td><td>0</td></tr>
+          <tr><td>127</td><td>b8</td><td>b2</td><td>trai</td><td>6.000</td><td>0</td><td>-6</td></tr>
+          <tr><td>128</td><td>a7</td><td>d6</td><td>duoi</td><td>3.162</td><td>3</td><td>-1</td></tr>
+          <tr><td>129</td><td>b7</td><td>d6</td><td>duoi</td><td>2.236</td><td>2</td><td>-1</td></tr>
+          <tr><td>130</td><td>b6</td><td>d5</td><td>duoi</td><td>2.236</td><td>2</td><td>-1</td></tr>
+          <tr><td>131</td><td>a8</td><td>b6</td><td>gan</td><td>2.236</td><td>1</td><td>-2</td></tr>
+          <tr><td>132</td><td>d6</td><td>a1</td><td>xa</td><td>5.831</td><td>-3</td><td>-5</td></tr>
+          <tr><td>133</td><td>a7</td><td>c7</td><td>duoi</td><td>2.000</td><td>2</td><td>0</td></tr>
+          <tr><td>134</td><td>c3</td><td>c5</td><td>gan</td><td>2.000</td><td>0</td><td>2</td></tr>
+          <tr><td>135</td><td>b2</td><td>a9</td><td>phai</td><td>7.071</td><td>-1</td><td>7</td></tr>
+          <tr><td>136</td><td>a1</td><td>a8</td><td>phai</td><td>7.000</td><td>0</td><td>7</td></tr>
+          <tr><td>137</td><td>d5</td><td>a7</td><td>cheo_vua</td><td>3.606</td><td>-3</td><td>2</td></tr>
+          <tr><td>138</td><td>a2</td><td>b7</td><td>phai</td><td>5.099</td><td>1</td><td>5</td></tr>
+          <tr><td>139</td><td>a9</td><td>a1</td><td>xa</td><td>8.000</td><td>0</td><td>-8</td></tr>
+          <tr><td>140</td><td>c6</td><td>a2</td><td>xa</td><td>4.472</td><td>-2</td><td>-4</td></tr>
+          <tr><td>141</td><td>b8</td><td>d4</td><td>xa</td><td>4.472</td><td>2</td><td>-4</td></tr>
+          <tr><td>142</td><td>d4</td><td>b8</td><td>xa</td><td>4.472</td><td>-2</td><td>4</td></tr>
+          <tr><td>143</td><td>b3</td><td>c5</td><td>cheo_gan</td><td>2.236</td><td>1</td><td>2</td></tr>
+          <tr><td>144</td><td>c6</td><td>a7</td><td>tren</td><td>2.236</td><td>-2</td><td>1</td></tr>
+          <tr><td>145</td><td>c7</td><td>b3</td><td>trai</td><td>4.123</td><td>-1</td><td>-4</td></tr>
+          <tr><td>146</td><td>c5</td><td>a9</td><td>cheo_xa</td><td>4.472</td><td>-2</td><td>4</td></tr>
+          <tr><td>147</td><td>b7</td><td>c3</td><td>trai</td><td>4.123</td><td>1</td><td>-4</td></tr>
+          <tr><td>148</td><td>c4</td><td>a2</td><td>vua</td><td>2.828</td><td>-2</td><td>-2</td></tr>
+          <tr><td>149</td><td>a8</td><td>d5</td><td>xa</td><td>4.243</td><td>3</td><td>-3</td></tr>
+          <tr><td>150</td><td>d5</td><td>c7</td><td>cheo_gan</td><td>2.236</td><td>-1</td><td>2</td></tr>
+          <tr><td>151</td><td>c4</td><td>c6</td><td>gan</td><td>2.000</td><td>0</td><td>2</td></tr>
+          <tr><td>152</td><td>b2</td><td>d4</td><td>random</td><td>2.828</td><td>2</td><td>2</td></tr>
+          <tr><td>153</td><td>b8</td><td>b6</td><td>gan</td><td>2.000</td><td>0</td><td>-2</td></tr>
+          <tr><td>154</td><td>a9</td><td>b7</td><td>cheo_gan</td><td>2.236</td><td>1</td><td>-2</td></tr>
+          <tr><td>155</td><td>a7</td><td>c6</td><td>duoi</td><td>2.236</td><td>2</td><td>-1</td></tr>
+          <tr><td>156</td><td>d6</td><td>a8</td><td>vua</td><td>3.606</td><td>-3</td><td>2</td></tr>
+          <tr><td>157</td><td>c5</td><td>c7</td><td>gan</td><td>2.000</td><td>0</td><td>2</td></tr>
+          <tr><td>158</td><td>a2</td><td>d5</td><td>cheo_xa</td><td>4.243</td><td>3</td><td>3</td></tr>
+          <tr><td>159</td><td>b6</td><td>b3</td><td>trai</td><td>3.000</td><td>0</td><td>-3</td></tr>
+          <tr><td>160</td><td>b3</td><td>b6</td><td>phai</td><td>3.000</td><td>0</td><td>3</td></tr>
+          <tr><td>161</td><td>a1</td><td>c4</td><td>vua</td><td>3.606</td><td>2</td><td>3</td></tr>
+          <tr><td>162</td><td>d6</td><td>a7</td><td>tren</td><td>3.162</td><td>-3</td><td>1</td></tr>
+          <tr><td>163</td><td>d6</td><td>d4</td><td>gan</td><td>2.000</td><td>0</td><td>-2</td></tr>
+          <tr><td>164</td><td>c3</td><td>a1</td><td>cheo_vua</td><td>2.828</td><td>-2</td><td>-2</td></tr>
+          <tr><td>165</td><td>c6</td><td>c3</td><td>trai</td><td>3.000</td><td>0</td><td>-3</td></tr>
+          <tr><td>166</td><td>a9</td><td>b2</td><td>trai</td><td>7.071</td><td>1</td><td>-7</td></tr>
+          <tr><td>167</td><td>d4</td><td>b2</td><td>vua</td><td>2.828</td><td>-2</td><td>-2</td></tr>
+          <tr><td>168</td><td>a8</td><td>a2</td><td>trai</td><td>6.000</td><td>0</td><td>-6</td></tr>
+          <tr><td>169</td><td>c5</td><td>c3</td><td>gan</td><td>2.000</td><td>0</td><td>-2</td></tr>
+          <tr><td>170</td><td>c7</td><td>a8</td><td>tren</td><td>2.236</td><td>-2</td><td>1</td></tr>
+          <tr><td>171</td><td>c4</td><td>a9</td><td>xa</td><td>5.385</td><td>-2</td><td>5</td></tr>
+          <tr><td>172</td><td>a1</td><td>d6</td><td>xa</td><td>5.831</td><td>3</td><td>5</td></tr>
+          <tr><td>173</td><td>b7</td><td>d6</td><td>duoi</td><td>2.236</td><td>2</td><td>-1</td></tr>
+          <tr><td>174</td><td>d6</td><td>b6</td><td>tren</td><td>2.000</td><td>-2</td><td>0</td></tr>
+          <tr><td>175</td><td>b8</td><td>b3</td><td>xa</td><td>5.000</td><td>0</td><td>-5</td></tr>
+          <tr><td>176</td><td>b2</td><td>c4</td><td>cheo_gan</td><td>2.236</td><td>1</td><td>2</td></tr>
+          <tr><td>177</td><td>b3</td><td>b8</td><td>phai</td><td>5.000</td><td>0</td><td>5</td></tr>
+          <tr><td>178</td><td>d4</td><td>b7</td><td>vua</td><td>3.606</td><td>-2</td><td>3</td></tr>
+          <tr><td>179</td><td>c3</td><td>a2</td><td>tren</td><td>2.236</td><td>-2</td><td>-1</td></tr>
+          <tr><td>180</td><td>d5</td><td>b3</td><td>cheo_vua</td><td>2.828</td><td>-2</td><td>-2</td></tr>
+          <tr><td>181</td><td>a2</td><td>b6</td><td>vua</td><td>4.123</td><td>1</td><td>4</td></tr>
+          <tr><td>182</td><td>a2</td><td>a9</td><td>phai</td><td>7.000</td><td>0</td><td>7</td></tr>
+          <tr><td>183</td><td>b6</td><td>d5</td><td>duoi</td><td>2.236</td><td>2</td><td>-1</td></tr>
+          <tr><td>184</td><td>c6</td><td>a7</td><td>tren</td><td>2.236</td><td>-2</td><td>1</td></tr>
+          <tr><td>185</td><td>b3</td><td>c5</td><td>gan</td><td>2.236</td><td>1</td><td>2</td></tr>
+          <tr><td>186</td><td>c5</td><td>b7</td><td>gan</td><td>2.236</td><td>-1</td><td>2</td></tr>
+          <tr><td>187</td><td>c7</td><td>a8</td><td>tren</td><td>2.236</td><td>-2</td><td>1</td></tr>
+          <tr><td>188</td><td>a7</td><td>a1</td><td>random</td><td>6.000</td><td>0</td><td>-6</td></tr>
+          <tr><td>189</td><td>b7</td><td>a1</td><td>xa</td><td>6.083</td><td>-1</td><td>-6</td></tr>
+          <tr><td>190</td><td>a8</td><td>c7</td><td>duoi</td><td>2.236</td><td>2</td><td>-1</td></tr>
+          <tr><td>191</td><td>b8</td><td>c3</td><td>trai</td><td>5.099</td><td>1</td><td>-5</td></tr>
+          <tr><td>192</td><td>a7</td><td>c6</td><td>duoi</td><td>2.236</td><td>2</td><td>-1</td></tr>
+          <tr><td>193</td><td>c3</td><td>d5</td><td>gan</td><td>2.236</td><td>1</td><td>2</td></tr>
+          <tr><td>194</td><td>d5</td><td>b2</td><td>cheo_vua</td><td>3.606</td><td>-2</td><td>-3</td></tr>
+          <tr><td>195</td><td>a9</td><td>b3</td><td>trai</td><td>6.083</td><td>1</td><td>-6</td></tr>
+          <tr><td>196</td><td>c7</td><td>c4</td><td>trai</td><td>3.000</td><td>0</td><td>-3</td></tr>
+          <tr><td>197</td><td>a1</td><td>c3</td><td>vua</td><td>2.828</td><td>2</td><td>2</td></tr>
+          <tr><td>198</td><td>b2</td><td>d5</td><td>vua</td><td>3.606</td><td>2</td><td>3</td></tr>
+          <tr><td>199</td><td>d4</td><td>b3</td><td>tren</td><td>2.236</td><td>-2</td><td>-1</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Dữ liệu để kiểm tra</h2>
+  <pre id="selection-data">[
+  {
+    &quot;col_delta&quot;: 3,
+    &quot;container_cell&quot;: &quot;c5&quot;,
+    &quot;distance_cells&quot;: 3.606,
+    &quot;episode_index&quot;: 0,
+    &quot;object_cell&quot;: &quot;a2&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;b8&quot;,
+    &quot;distance_cells&quot;: 2.0,
+    &quot;episode_index&quot;: 1,
+    &quot;object_cell&quot;: &quot;b6&quot;,
+    &quot;relation&quot;: &quot;phai&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: 5,
+    &quot;container_cell&quot;: &quot;b6&quot;,
+    &quot;distance_cells&quot;: 5.099,
+    &quot;episode_index&quot;: 2,
+    &quot;object_cell&quot;: &quot;a1&quot;,
+    &quot;relation&quot;: &quot;phai&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;b7&quot;,
+    &quot;distance_cells&quot;: 2.828,
+    &quot;episode_index&quot;: 3,
+    &quot;object_cell&quot;: &quot;d5&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: -2,
+    &quot;container_cell&quot;: &quot;c4&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 4,
+    &quot;object_cell&quot;: &quot;d6&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: -3,
+    &quot;container_cell&quot;: &quot;a1&quot;,
+    &quot;distance_cells&quot;: 3.606,
+    &quot;episode_index&quot;: 5,
+    &quot;object_cell&quot;: &quot;c4&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: 3,
+    &quot;container_cell&quot;: &quot;d6&quot;,
+    &quot;distance_cells&quot;: 3.162,
+    &quot;episode_index&quot;: 6,
+    &quot;object_cell&quot;: &quot;c3&quot;,
+    &quot;relation&quot;: &quot;phai&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: -6,
+    &quot;container_cell&quot;: &quot;a2&quot;,
+    &quot;distance_cells&quot;: 6.083,
+    &quot;episode_index&quot;: 7,
+    &quot;object_cell&quot;: &quot;b8&quot;,
+    &quot;relation&quot;: &quot;trai&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: -1,
+    &quot;container_cell&quot;: &quot;c6&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 8,
+    &quot;object_cell&quot;: &quot;a7&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: 5,
+    &quot;container_cell&quot;: &quot;c7&quot;,
+    &quot;distance_cells&quot;: 5.099,
+    &quot;episode_index&quot;: 9,
+    &quot;object_cell&quot;: &quot;b2&quot;,
+    &quot;relation&quot;: &quot;phai&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: 4,
+    &quot;container_cell&quot;: &quot;a8&quot;,
+    &quot;distance_cells&quot;: 5.0,
+    &quot;episode_index&quot;: 10,
+    &quot;object_cell&quot;: &quot;d4&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: -3
+  },
+  {
+    &quot;col_delta&quot;: 1,
+    &quot;container_cell&quot;: &quot;d4&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 11,
+    &quot;object_cell&quot;: &quot;b3&quot;,
+    &quot;relation&quot;: &quot;duoi&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: -6,
+    &quot;container_cell&quot;: &quot;b2&quot;,
+    &quot;distance_cells&quot;: 6.083,
+    &quot;episode_index&quot;: 12,
+    &quot;object_cell&quot;: &quot;a8&quot;,
+    &quot;relation&quot;: &quot;cheo_xa&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: -2,
+    &quot;container_cell&quot;: &quot;b3&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 13,
+    &quot;object_cell&quot;: &quot;c5&quot;,
+    &quot;relation&quot;: &quot;cheo_gan&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: 3,
+    &quot;container_cell&quot;: &quot;a9&quot;,
+    &quot;distance_cells&quot;: 3.606,
+    &quot;episode_index&quot;: 14,
+    &quot;object_cell&quot;: &quot;c6&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: 0,
+    &quot;container_cell&quot;: &quot;a7&quot;,
+    &quot;distance_cells&quot;: 2.0,
+    &quot;episode_index&quot;: 15,
+    &quot;object_cell&quot;: &quot;c7&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: -1,
+    &quot;container_cell&quot;: &quot;d6&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 16,
+    &quot;object_cell&quot;: &quot;b7&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: -2,
+    &quot;container_cell&quot;: &quot;a7&quot;,
+    &quot;distance_cells&quot;: 2.0,
+    &quot;episode_index&quot;: 17,
+    &quot;object_cell&quot;: &quot;a9&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: 1,
+    &quot;container_cell&quot;: &quot;c3&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 18,
+    &quot;object_cell&quot;: &quot;a2&quot;,
+    &quot;relation&quot;: &quot;duoi&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: -1,
+    &quot;container_cell&quot;: &quot;d5&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 19,
+    &quot;object_cell&quot;: &quot;b6&quot;,
+    &quot;relation&quot;: &quot;duoi&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;d5&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 20,
+    &quot;object_cell&quot;: &quot;c3&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: -5,
+    &quot;container_cell&quot;: &quot;b3&quot;,
+    &quot;distance_cells&quot;: 5.099,
+    &quot;episode_index&quot;: 21,
+    &quot;object_cell&quot;: &quot;a8&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: -5,
+    &quot;container_cell&quot;: &quot;a2&quot;,
+    &quot;distance_cells&quot;: 5.099,
+    &quot;episode_index&quot;: 22,
+    &quot;object_cell&quot;: &quot;b7&quot;,
+    &quot;relation&quot;: &quot;trai&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: 3,
+    &quot;container_cell&quot;: &quot;c7&quot;,
+    &quot;distance_cells&quot;: 3.162,
+    &quot;episode_index&quot;: 23,
+    &quot;object_cell&quot;: &quot;d4&quot;,
+    &quot;relation&quot;: &quot;cheo_vua&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: 3,
+    &quot;container_cell&quot;: &quot;d4&quot;,
+    &quot;distance_cells&quot;: 4.243,
+    &quot;episode_index&quot;: 24,
+    &quot;object_cell&quot;: &quot;a1&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: 3
+  },
+  {
+    &quot;col_delta&quot;: 6,
+    &quot;container_cell&quot;: &quot;a9&quot;,
+    &quot;distance_cells&quot;: 6.083,
+    &quot;episode_index&quot;: 25,
+    &quot;object_cell&quot;: &quot;b3&quot;,
+    &quot;relation&quot;: &quot;random&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: 3,
+    &quot;container_cell&quot;: &quot;b8&quot;,
+    &quot;distance_cells&quot;: 3.606,
+    &quot;episode_index&quot;: 26,
+    &quot;object_cell&quot;: &quot;d5&quot;,
+    &quot;relation&quot;: &quot;cheo_vua&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: -7,
+    &quot;container_cell&quot;: &quot;a1&quot;,
+    &quot;distance_cells&quot;: 7.071,
+    &quot;episode_index&quot;: 27,
+    &quot;object_cell&quot;: &quot;b8&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;b6&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 28,
+    &quot;object_cell&quot;: &quot;c4&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;c4&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 29,
+    &quot;object_cell&quot;: &quot;b2&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: -4,
+    &quot;container_cell&quot;: &quot;c3&quot;,
+    &quot;distance_cells&quot;: 4.472,
+    &quot;episode_index&quot;: 30,
+    &quot;object_cell&quot;: &quot;a7&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: -4,
+    &quot;container_cell&quot;: &quot;c5&quot;,
+    &quot;distance_cells&quot;: 4.472,
+    &quot;episode_index&quot;: 31,
+    &quot;object_cell&quot;: &quot;a9&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: 3,
+    &quot;container_cell&quot;: &quot;a8&quot;,
+    &quot;distance_cells&quot;: 3.606,
+    &quot;episode_index&quot;: 32,
+    &quot;object_cell&quot;: &quot;c5&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: 0,
+    &quot;container_cell&quot;: &quot;d6&quot;,
+    &quot;distance_cells&quot;: 2.0,
+    &quot;episode_index&quot;: 33,
+    &quot;object_cell&quot;: &quot;b6&quot;,
+    &quot;relation&quot;: &quot;duoi&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: -4,
+    &quot;container_cell&quot;: &quot;b2&quot;,
+    &quot;distance_cells&quot;: 4.123,
+    &quot;episode_index&quot;: 34,
+    &quot;object_cell&quot;: &quot;c6&quot;,
+    &quot;relation&quot;: &quot;trai&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: 1,
+    &quot;container_cell&quot;: &quot;b7&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 35,
+    &quot;object_cell&quot;: &quot;d6&quot;,
+    &quot;relation&quot;: &quot;cheo_gan&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: -5,
+    &quot;container_cell&quot;: &quot;b2&quot;,
+    &quot;distance_cells&quot;: 5.099,
+    &quot;episode_index&quot;: 36,
+    &quot;object_cell&quot;: &quot;c7&quot;,
+    &quot;relation&quot;: &quot;cheo_xa&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: 3,
+    &quot;container_cell&quot;: &quot;c6&quot;,
+    &quot;distance_cells&quot;: 3.0,
+    &quot;episode_index&quot;: 37,
+    &quot;object_cell&quot;: &quot;c3&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: -2,
+    &quot;container_cell&quot;: &quot;c6&quot;,
+    &quot;distance_cells&quot;: 2.828,
+    &quot;episode_index&quot;: 38,
+    &quot;object_cell&quot;: &quot;a8&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: -3,
+    &quot;container_cell&quot;: &quot;b3&quot;,
+    &quot;distance_cells&quot;: 3.162,
+    &quot;episode_index&quot;: 39,
+    &quot;object_cell&quot;: &quot;c6&quot;,
+    &quot;relation&quot;: &quot;trai&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: 0,
+    &quot;container_cell&quot;: &quot;b6&quot;,
+    &quot;distance_cells&quot;: 2.0,
+    &quot;episode_index&quot;: 40,
+    &quot;object_cell&quot;: &quot;d6&quot;,
+    &quot;relation&quot;: &quot;tren&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: 1,
+    &quot;container_cell&quot;: &quot;a8&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 41,
+    &quot;object_cell&quot;: &quot;c7&quot;,
+    &quot;relation&quot;: &quot;tren&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: -2,
+    &quot;container_cell&quot;: &quot;b7&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 42,
+    &quot;object_cell&quot;: &quot;a9&quot;,
+    &quot;relation&quot;: &quot;cheo_gan&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: -4,
+    &quot;container_cell&quot;: &quot;a1&quot;,
+    &quot;distance_cells&quot;: 5.0,
+    &quot;episode_index&quot;: 43,
+    &quot;object_cell&quot;: &quot;d5&quot;,
+    &quot;relation&quot;: &quot;cheo_xa&quot;,
+    &quot;row_delta&quot;: -3
+  },
+  {
+    &quot;col_delta&quot;: 3,
+    &quot;container_cell&quot;: &quot;c5&quot;,
+    &quot;distance_cells&quot;: 3.162,
+    &quot;episode_index&quot;: 44,
+    &quot;object_cell&quot;: &quot;b2&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: 6,
+    &quot;container_cell&quot;: &quot;c7&quot;,
+    &quot;distance_cells&quot;: 6.325,
+    &quot;episode_index&quot;: 45,
+    &quot;object_cell&quot;: &quot;a1&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;a9&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 46,
+    &quot;object_cell&quot;: &quot;b7&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: 4,
+    &quot;container_cell&quot;: &quot;a7&quot;,
+    &quot;distance_cells&quot;: 4.123,
+    &quot;episode_index&quot;: 47,
+    &quot;object_cell&quot;: &quot;b3&quot;,
+    &quot;relation&quot;: &quot;phai&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: -1,
+    &quot;container_cell&quot;: &quot;b3&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 48,
+    &quot;object_cell&quot;: &quot;d4&quot;,
+    &quot;relation&quot;: &quot;tren&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: -1,
+    &quot;container_cell&quot;: &quot;a2&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 49,
+    &quot;object_cell&quot;: &quot;c3&quot;,
+    &quot;relation&quot;: &quot;tren&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: 6,
+    &quot;container_cell&quot;: &quot;b8&quot;,
+    &quot;distance_cells&quot;: 6.083,
+    &quot;episode_index&quot;: 50,
+    &quot;object_cell&quot;: &quot;a2&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: -3,
+    &quot;container_cell&quot;: &quot;d5&quot;,
+    &quot;distance_cells&quot;: 3.606,
+    &quot;episode_index&quot;: 51,
+    &quot;object_cell&quot;: &quot;b8&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: -2,
+    &quot;container_cell&quot;: &quot;c3&quot;,
+    &quot;distance_cells&quot;: 2.0,
+    &quot;episode_index&quot;: 52,
+    &quot;object_cell&quot;: &quot;c5&quot;,
+    &quot;relation&quot;: &quot;trai&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: -3,
+    &quot;container_cell&quot;: &quot;d4&quot;,
+    &quot;distance_cells&quot;: 4.243,
+    &quot;episode_index&quot;: 53,
+    &quot;object_cell&quot;: &quot;a7&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: 3
+  },
+  {
+    &quot;col_delta&quot;: -1,
+    &quot;container_cell&quot;: &quot;c7&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 54,
+    &quot;object_cell&quot;: &quot;a8&quot;,
+    &quot;relation&quot;: &quot;duoi&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: 1,
+    &quot;container_cell&quot;: &quot;a7&quot;,
+    &quot;distance_cells&quot;: 3.162,
+    &quot;episode_index&quot;: 55,
+    &quot;object_cell&quot;: &quot;d6&quot;,
+    &quot;relation&quot;: &quot;tren&quot;,
+    &quot;row_delta&quot;: -3
+  },
+  {
+    &quot;col_delta&quot;: -2,
+    &quot;container_cell&quot;: &quot;b2&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 56,
+    &quot;object_cell&quot;: &quot;c4&quot;,
+    &quot;relation&quot;: &quot;trai&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: -2,
+    &quot;container_cell&quot;: &quot;c4&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 57,
+    &quot;object_cell&quot;: &quot;b6&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: -1,
+    &quot;container_cell&quot;: &quot;d6&quot;,
+    &quot;distance_cells&quot;: 3.162,
+    &quot;episode_index&quot;: 58,
+    &quot;object_cell&quot;: &quot;a7&quot;,
+    &quot;relation&quot;: &quot;duoi&quot;,
+    &quot;row_delta&quot;: 3
+  },
+  {
+    &quot;col_delta&quot;: 1,
+    &quot;container_cell&quot;: &quot;b6&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 59,
+    &quot;object_cell&quot;: &quot;d5&quot;,
+    &quot;relation&quot;: &quot;tren&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: 3,
+    &quot;container_cell&quot;: &quot;b7&quot;,
+    &quot;distance_cells&quot;: 3.162,
+    &quot;episode_index&quot;: 60,
+    &quot;object_cell&quot;: &quot;c4&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;b8&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 61,
+    &quot;object_cell&quot;: &quot;c6&quot;,
+    &quot;relation&quot;: &quot;phai&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: 3,
+    &quot;container_cell&quot;: &quot;c6&quot;,
+    &quot;distance_cells&quot;: 3.162,
+    &quot;episode_index&quot;: 62,
+    &quot;object_cell&quot;: &quot;b3&quot;,
+    &quot;relation&quot;: &quot;phai&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: 1,
+    &quot;container_cell&quot;: &quot;a7&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 63,
+    &quot;object_cell&quot;: &quot;c6&quot;,
+    &quot;relation&quot;: &quot;tren&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;a9&quot;,
+    &quot;distance_cells&quot;: 2.828,
+    &quot;episode_index&quot;: 64,
+    &quot;object_cell&quot;: &quot;c7&quot;,
+    &quot;relation&quot;: &quot;cheo_vua&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: -4,
+    &quot;container_cell&quot;: &quot;d5&quot;,
+    &quot;distance_cells&quot;: 5.0,
+    &quot;episode_index&quot;: 65,
+    &quot;object_cell&quot;: &quot;a9&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: 3
+  },
+  {
+    &quot;col_delta&quot;: -2,
+    &quot;container_cell&quot;: &quot;c5&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 66,
+    &quot;object_cell&quot;: &quot;b7&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: 6,
+    &quot;container_cell&quot;: &quot;a8&quot;,
+    &quot;distance_cells&quot;: 6.0,
+    &quot;episode_index&quot;: 67,
+    &quot;object_cell&quot;: &quot;a2&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: -2,
+    &quot;container_cell&quot;: &quot;a2&quot;,
+    &quot;distance_cells&quot;: 3.606,
+    &quot;episode_index&quot;: 68,
+    &quot;object_cell&quot;: &quot;d4&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: -3
+  },
+  {
+    &quot;col_delta&quot;: 0,
+    &quot;container_cell&quot;: &quot;c7&quot;,
+    &quot;distance_cells&quot;: 2.0,
+    &quot;episode_index&quot;: 69,
+    &quot;object_cell&quot;: &quot;a7&quot;,
+    &quot;relation&quot;: &quot;duoi&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: 1,
+    &quot;container_cell&quot;: &quot;b7&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 70,
+    &quot;object_cell&quot;: &quot;d6&quot;,
+    &quot;relation&quot;: &quot;tren&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: -2,
+    &quot;container_cell&quot;: &quot;c6&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 71,
+    &quot;object_cell&quot;: &quot;b8&quot;,
+    &quot;relation&quot;: &quot;cheo_gan&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: -4,
+    &quot;container_cell&quot;: &quot;a1&quot;,
+    &quot;distance_cells&quot;: 4.472,
+    &quot;episode_index&quot;: 72,
+    &quot;object_cell&quot;: &quot;c5&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: 6,
+    &quot;container_cell&quot;: &quot;a8&quot;,
+    &quot;distance_cells&quot;: 6.083,
+    &quot;episode_index&quot;: 73,
+    &quot;object_cell&quot;: &quot;b2&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: 8,
+    &quot;container_cell&quot;: &quot;a9&quot;,
+    &quot;distance_cells&quot;: 8.0,
+    &quot;episode_index&quot;: 74,
+    &quot;object_cell&quot;: &quot;a1&quot;,
+    &quot;relation&quot;: &quot;phai&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: -2,
+    &quot;container_cell&quot;: &quot;c3&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 75,
+    &quot;object_cell&quot;: &quot;d5&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;d6&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 76,
+    &quot;object_cell&quot;: &quot;c4&quot;,
+    &quot;relation&quot;: &quot;phai&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: -3,
+    &quot;container_cell&quot;: &quot;c4&quot;,
+    &quot;distance_cells&quot;: 3.162,
+    &quot;episode_index&quot;: 77,
+    &quot;object_cell&quot;: &quot;b7&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: -2,
+    &quot;container_cell&quot;: &quot;d5&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 78,
+    &quot;object_cell&quot;: &quot;c7&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: -4,
+    &quot;container_cell&quot;: &quot;d4&quot;,
+    &quot;distance_cells&quot;: 5.0,
+    &quot;episode_index&quot;: 79,
+    &quot;object_cell&quot;: &quot;a8&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: 3
+  },
+  {
+    &quot;col_delta&quot;: 1,
+    &quot;container_cell&quot;: &quot;c3&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 80,
+    &quot;object_cell&quot;: &quot;a2&quot;,
+    &quot;relation&quot;: &quot;duoi&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: -5,
+    &quot;container_cell&quot;: &quot;a1&quot;,
+    &quot;distance_cells&quot;: 5.099,
+    &quot;episode_index&quot;: 81,
+    &quot;object_cell&quot;: &quot;b6&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: 1,
+    &quot;container_cell&quot;: &quot;d4&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 82,
+    &quot;object_cell&quot;: &quot;b3&quot;,
+    &quot;relation&quot;: &quot;duoi&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: -3,
+    &quot;container_cell&quot;: &quot;a2&quot;,
+    &quot;distance_cells&quot;: 3.606,
+    &quot;episode_index&quot;: 83,
+    &quot;object_cell&quot;: &quot;c5&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: 5,
+    &quot;container_cell&quot;: &quot;b8&quot;,
+    &quot;distance_cells&quot;: 5.099,
+    &quot;episode_index&quot;: 84,
+    &quot;object_cell&quot;: &quot;c3&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: -1,
+    &quot;container_cell&quot;: &quot;b3&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 85,
+    &quot;object_cell&quot;: &quot;d4&quot;,
+    &quot;relation&quot;: &quot;tren&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: -3,
+    &quot;container_cell&quot;: &quot;b6&quot;,
+    &quot;distance_cells&quot;: 3.162,
+    &quot;episode_index&quot;: 86,
+    &quot;object_cell&quot;: &quot;a9&quot;,
+    &quot;relation&quot;: &quot;cheo_vua&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: -4,
+    &quot;container_cell&quot;: &quot;c4&quot;,
+    &quot;distance_cells&quot;: 4.123,
+    &quot;episode_index&quot;: 87,
+    &quot;object_cell&quot;: &quot;b8&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;b3&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 88,
+    &quot;object_cell&quot;: &quot;a1&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: 4,
+    &quot;container_cell&quot;: &quot;b6&quot;,
+    &quot;distance_cells&quot;: 4.0,
+    &quot;episode_index&quot;: 89,
+    &quot;object_cell&quot;: &quot;b2&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: -3,
+    &quot;container_cell&quot;: &quot;c5&quot;,
+    &quot;distance_cells&quot;: 3.162,
+    &quot;episode_index&quot;: 90,
+    &quot;object_cell&quot;: &quot;b8&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: 7,
+    &quot;container_cell&quot;: &quot;b8&quot;,
+    &quot;distance_cells&quot;: 7.071,
+    &quot;episode_index&quot;: 91,
+    &quot;object_cell&quot;: &quot;a1&quot;,
+    &quot;relation&quot;: &quot;phai&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: -3,
+    &quot;container_cell&quot;: &quot;b2&quot;,
+    &quot;distance_cells&quot;: 3.162,
+    &quot;episode_index&quot;: 92,
+    &quot;object_cell&quot;: &quot;c5&quot;,
+    &quot;relation&quot;: &quot;cheo_vua&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: -2,
+    &quot;container_cell&quot;: &quot;d4&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 93,
+    &quot;object_cell&quot;: &quot;c6&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: 5,
+    &quot;container_cell&quot;: &quot;a7&quot;,
+    &quot;distance_cells&quot;: 5.099,
+    &quot;episode_index&quot;: 94,
+    &quot;object_cell&quot;: &quot;b2&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;d6&quot;,
+    &quot;distance_cells&quot;: 2.0,
+    &quot;episode_index&quot;: 95,
+    &quot;object_cell&quot;: &quot;d4&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;a9&quot;,
+    &quot;distance_cells&quot;: 2.0,
+    &quot;episode_index&quot;: 96,
+    &quot;object_cell&quot;: &quot;a7&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: -2,
+    &quot;container_cell&quot;: &quot;a1&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 97,
+    &quot;object_cell&quot;: &quot;b3&quot;,
+    &quot;relation&quot;: &quot;random&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: -5,
+    &quot;container_cell&quot;: &quot;c4&quot;,
+    &quot;distance_cells&quot;: 5.385,
+    &quot;episode_index&quot;: 98,
+    &quot;object_cell&quot;: &quot;a9&quot;,
+    &quot;relation&quot;: &quot;cheo_xa&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: -3,
+    &quot;container_cell&quot;: &quot;c3&quot;,
+    &quot;distance_cells&quot;: 3.162,
+    &quot;episode_index&quot;: 99,
+    &quot;object_cell&quot;: &quot;b6&quot;,
+    &quot;relation&quot;: &quot;trai&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: 3,
+    &quot;container_cell&quot;: &quot;c7&quot;,
+    &quot;distance_cells&quot;: 3.0,
+    &quot;episode_index&quot;: 100,
+    &quot;object_cell&quot;: &quot;c4&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: 4,
+    &quot;container_cell&quot;: &quot;b7&quot;,
+    &quot;distance_cells&quot;: 4.123,
+    &quot;episode_index&quot;: 101,
+    &quot;object_cell&quot;: &quot;c3&quot;,
+    &quot;relation&quot;: &quot;phai&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: -4,
+    &quot;container_cell&quot;: &quot;b2&quot;,
+    &quot;distance_cells&quot;: 4.472,
+    &quot;episode_index&quot;: 102,
+    &quot;object_cell&quot;: &quot;d6&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: -2,
+    &quot;container_cell&quot;: &quot;c5&quot;,
+    &quot;distance_cells&quot;: 2.0,
+    &quot;episode_index&quot;: 103,
+    &quot;object_cell&quot;: &quot;c7&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: 1,
+    &quot;container_cell&quot;: &quot;b6&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 104,
+    &quot;object_cell&quot;: &quot;d5&quot;,
+    &quot;relation&quot;: &quot;tren&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: -1,
+    &quot;container_cell&quot;: &quot;c7&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 105,
+    &quot;object_cell&quot;: &quot;a8&quot;,
+    &quot;relation&quot;: &quot;duoi&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: -5,
+    &quot;container_cell&quot;: &quot;b2&quot;,
+    &quot;distance_cells&quot;: 5.0,
+    &quot;episode_index&quot;: 106,
+    &quot;object_cell&quot;: &quot;b7&quot;,
+    &quot;relation&quot;: &quot;trai&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;c4&quot;,
+    &quot;distance_cells&quot;: 2.828,
+    &quot;episode_index&quot;: 107,
+    &quot;object_cell&quot;: &quot;a2&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;a8&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 108,
+    &quot;object_cell&quot;: &quot;b6&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: 4,
+    &quot;container_cell&quot;: &quot;c6&quot;,
+    &quot;distance_cells&quot;: 4.123,
+    &quot;episode_index&quot;: 109,
+    &quot;object_cell&quot;: &quot;b2&quot;,
+    &quot;relation&quot;: &quot;phai&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: -2,
+    &quot;container_cell&quot;: &quot;d5&quot;,
+    &quot;distance_cells&quot;: 3.606,
+    &quot;episode_index&quot;: 110,
+    &quot;object_cell&quot;: &quot;a7&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: 3
+  },
+  {
+    &quot;col_delta&quot;: -7,
+    &quot;container_cell&quot;: &quot;a2&quot;,
+    &quot;distance_cells&quot;: 7.0,
+    &quot;episode_index&quot;: 111,
+    &quot;object_cell&quot;: &quot;a9&quot;,
+    &quot;relation&quot;: &quot;trai&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: -4,
+    &quot;container_cell&quot;: &quot;b3&quot;,
+    &quot;distance_cells&quot;: 4.0,
+    &quot;episode_index&quot;: 112,
+    &quot;object_cell&quot;: &quot;b7&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: 5,
+    &quot;container_cell&quot;: &quot;c6&quot;,
+    &quot;distance_cells&quot;: 5.385,
+    &quot;episode_index&quot;: 113,
+    &quot;object_cell&quot;: &quot;a1&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;b8&quot;,
+    &quot;distance_cells&quot;: 2.828,
+    &quot;episode_index&quot;: 114,
+    &quot;object_cell&quot;: &quot;d6&quot;,
+    &quot;relation&quot;: &quot;cheo_vua&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: 4,
+    &quot;container_cell&quot;: &quot;a9&quot;,
+    &quot;distance_cells&quot;: 5.0,
+    &quot;episode_index&quot;: 115,
+    &quot;object_cell&quot;: &quot;d5&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: -3
+  },
+  {
+    &quot;col_delta&quot;: -3,
+    &quot;container_cell&quot;: &quot;c5&quot;,
+    &quot;distance_cells&quot;: 3.606,
+    &quot;episode_index&quot;: 116,
+    &quot;object_cell&quot;: &quot;a8&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;b7&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 117,
+    &quot;object_cell&quot;: &quot;c5&quot;,
+    &quot;relation&quot;: &quot;cheo_gan&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: 0,
+    &quot;container_cell&quot;: &quot;d6&quot;,
+    &quot;distance_cells&quot;: 2.0,
+    &quot;episode_index&quot;: 118,
+    &quot;object_cell&quot;: &quot;b6&quot;,
+    &quot;relation&quot;: &quot;duoi&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: -1,
+    &quot;container_cell&quot;: &quot;a2&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 119,
+    &quot;object_cell&quot;: &quot;c3&quot;,
+    &quot;relation&quot;: &quot;tren&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;d4&quot;,
+    &quot;distance_cells&quot;: 3.606,
+    &quot;episode_index&quot;: 120,
+    &quot;object_cell&quot;: &quot;a2&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: 3
+  },
+  {
+    &quot;col_delta&quot;: -4,
+    &quot;container_cell&quot;: &quot;c3&quot;,
+    &quot;distance_cells&quot;: 4.0,
+    &quot;episode_index&quot;: 121,
+    &quot;object_cell&quot;: &quot;c7&quot;,
+    &quot;relation&quot;: &quot;trai&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: 5,
+    &quot;container_cell&quot;: &quot;a8&quot;,
+    &quot;distance_cells&quot;: 5.099,
+    &quot;episode_index&quot;: 122,
+    &quot;object_cell&quot;: &quot;b3&quot;,
+    &quot;relation&quot;: &quot;phai&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: -2,
+    &quot;container_cell&quot;: &quot;c4&quot;,
+    &quot;distance_cells&quot;: 2.0,
+    &quot;episode_index&quot;: 123,
+    &quot;object_cell&quot;: &quot;c6&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;c6&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 124,
+    &quot;object_cell&quot;: &quot;d4&quot;,
+    &quot;relation&quot;: &quot;cheo_gan&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: 4,
+    &quot;container_cell&quot;: &quot;b8&quot;,
+    &quot;distance_cells&quot;: 4.123,
+    &quot;episode_index&quot;: 125,
+    &quot;object_cell&quot;: &quot;c4&quot;,
+    &quot;relation&quot;: &quot;phai&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: 0,
+    &quot;container_cell&quot;: &quot;a7&quot;,
+    &quot;distance_cells&quot;: 2.0,
+    &quot;episode_index&quot;: 126,
+    &quot;object_cell&quot;: &quot;c7&quot;,
+    &quot;relation&quot;: &quot;tren&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: -6,
+    &quot;container_cell&quot;: &quot;b2&quot;,
+    &quot;distance_cells&quot;: 6.0,
+    &quot;episode_index&quot;: 127,
+    &quot;object_cell&quot;: &quot;b8&quot;,
+    &quot;relation&quot;: &quot;trai&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: -1,
+    &quot;container_cell&quot;: &quot;d6&quot;,
+    &quot;distance_cells&quot;: 3.162,
+    &quot;episode_index&quot;: 128,
+    &quot;object_cell&quot;: &quot;a7&quot;,
+    &quot;relation&quot;: &quot;duoi&quot;,
+    &quot;row_delta&quot;: 3
+  },
+  {
+    &quot;col_delta&quot;: -1,
+    &quot;container_cell&quot;: &quot;d6&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 129,
+    &quot;object_cell&quot;: &quot;b7&quot;,
+    &quot;relation&quot;: &quot;duoi&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: -1,
+    &quot;container_cell&quot;: &quot;d5&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 130,
+    &quot;object_cell&quot;: &quot;b6&quot;,
+    &quot;relation&quot;: &quot;duoi&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: -2,
+    &quot;container_cell&quot;: &quot;b6&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 131,
+    &quot;object_cell&quot;: &quot;a8&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: -5,
+    &quot;container_cell&quot;: &quot;a1&quot;,
+    &quot;distance_cells&quot;: 5.831,
+    &quot;episode_index&quot;: 132,
+    &quot;object_cell&quot;: &quot;d6&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: -3
+  },
+  {
+    &quot;col_delta&quot;: 0,
+    &quot;container_cell&quot;: &quot;c7&quot;,
+    &quot;distance_cells&quot;: 2.0,
+    &quot;episode_index&quot;: 133,
+    &quot;object_cell&quot;: &quot;a7&quot;,
+    &quot;relation&quot;: &quot;duoi&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;c5&quot;,
+    &quot;distance_cells&quot;: 2.0,
+    &quot;episode_index&quot;: 134,
+    &quot;object_cell&quot;: &quot;c3&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: 7,
+    &quot;container_cell&quot;: &quot;a9&quot;,
+    &quot;distance_cells&quot;: 7.071,
+    &quot;episode_index&quot;: 135,
+    &quot;object_cell&quot;: &quot;b2&quot;,
+    &quot;relation&quot;: &quot;phai&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: 7,
+    &quot;container_cell&quot;: &quot;a8&quot;,
+    &quot;distance_cells&quot;: 7.0,
+    &quot;episode_index&quot;: 136,
+    &quot;object_cell&quot;: &quot;a1&quot;,
+    &quot;relation&quot;: &quot;phai&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;a7&quot;,
+    &quot;distance_cells&quot;: 3.606,
+    &quot;episode_index&quot;: 137,
+    &quot;object_cell&quot;: &quot;d5&quot;,
+    &quot;relation&quot;: &quot;cheo_vua&quot;,
+    &quot;row_delta&quot;: -3
+  },
+  {
+    &quot;col_delta&quot;: 5,
+    &quot;container_cell&quot;: &quot;b7&quot;,
+    &quot;distance_cells&quot;: 5.099,
+    &quot;episode_index&quot;: 138,
+    &quot;object_cell&quot;: &quot;a2&quot;,
+    &quot;relation&quot;: &quot;phai&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: -8,
+    &quot;container_cell&quot;: &quot;a1&quot;,
+    &quot;distance_cells&quot;: 8.0,
+    &quot;episode_index&quot;: 139,
+    &quot;object_cell&quot;: &quot;a9&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: -4,
+    &quot;container_cell&quot;: &quot;a2&quot;,
+    &quot;distance_cells&quot;: 4.472,
+    &quot;episode_index&quot;: 140,
+    &quot;object_cell&quot;: &quot;c6&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: -4,
+    &quot;container_cell&quot;: &quot;d4&quot;,
+    &quot;distance_cells&quot;: 4.472,
+    &quot;episode_index&quot;: 141,
+    &quot;object_cell&quot;: &quot;b8&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: 4,
+    &quot;container_cell&quot;: &quot;b8&quot;,
+    &quot;distance_cells&quot;: 4.472,
+    &quot;episode_index&quot;: 142,
+    &quot;object_cell&quot;: &quot;d4&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;c5&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 143,
+    &quot;object_cell&quot;: &quot;b3&quot;,
+    &quot;relation&quot;: &quot;cheo_gan&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: 1,
+    &quot;container_cell&quot;: &quot;a7&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 144,
+    &quot;object_cell&quot;: &quot;c6&quot;,
+    &quot;relation&quot;: &quot;tren&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: -4,
+    &quot;container_cell&quot;: &quot;b3&quot;,
+    &quot;distance_cells&quot;: 4.123,
+    &quot;episode_index&quot;: 145,
+    &quot;object_cell&quot;: &quot;c7&quot;,
+    &quot;relation&quot;: &quot;trai&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: 4,
+    &quot;container_cell&quot;: &quot;a9&quot;,
+    &quot;distance_cells&quot;: 4.472,
+    &quot;episode_index&quot;: 146,
+    &quot;object_cell&quot;: &quot;c5&quot;,
+    &quot;relation&quot;: &quot;cheo_xa&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: -4,
+    &quot;container_cell&quot;: &quot;c3&quot;,
+    &quot;distance_cells&quot;: 4.123,
+    &quot;episode_index&quot;: 147,
+    &quot;object_cell&quot;: &quot;b7&quot;,
+    &quot;relation&quot;: &quot;trai&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: -2,
+    &quot;container_cell&quot;: &quot;a2&quot;,
+    &quot;distance_cells&quot;: 2.828,
+    &quot;episode_index&quot;: 148,
+    &quot;object_cell&quot;: &quot;c4&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: -3,
+    &quot;container_cell&quot;: &quot;d5&quot;,
+    &quot;distance_cells&quot;: 4.243,
+    &quot;episode_index&quot;: 149,
+    &quot;object_cell&quot;: &quot;a8&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: 3
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;c7&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 150,
+    &quot;object_cell&quot;: &quot;d5&quot;,
+    &quot;relation&quot;: &quot;cheo_gan&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;c6&quot;,
+    &quot;distance_cells&quot;: 2.0,
+    &quot;episode_index&quot;: 151,
+    &quot;object_cell&quot;: &quot;c4&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;d4&quot;,
+    &quot;distance_cells&quot;: 2.828,
+    &quot;episode_index&quot;: 152,
+    &quot;object_cell&quot;: &quot;b2&quot;,
+    &quot;relation&quot;: &quot;random&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: -2,
+    &quot;container_cell&quot;: &quot;b6&quot;,
+    &quot;distance_cells&quot;: 2.0,
+    &quot;episode_index&quot;: 153,
+    &quot;object_cell&quot;: &quot;b8&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: -2,
+    &quot;container_cell&quot;: &quot;b7&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 154,
+    &quot;object_cell&quot;: &quot;a9&quot;,
+    &quot;relation&quot;: &quot;cheo_gan&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: -1,
+    &quot;container_cell&quot;: &quot;c6&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 155,
+    &quot;object_cell&quot;: &quot;a7&quot;,
+    &quot;relation&quot;: &quot;duoi&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;a8&quot;,
+    &quot;distance_cells&quot;: 3.606,
+    &quot;episode_index&quot;: 156,
+    &quot;object_cell&quot;: &quot;d6&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: -3
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;c7&quot;,
+    &quot;distance_cells&quot;: 2.0,
+    &quot;episode_index&quot;: 157,
+    &quot;object_cell&quot;: &quot;c5&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: 3,
+    &quot;container_cell&quot;: &quot;d5&quot;,
+    &quot;distance_cells&quot;: 4.243,
+    &quot;episode_index&quot;: 158,
+    &quot;object_cell&quot;: &quot;a2&quot;,
+    &quot;relation&quot;: &quot;cheo_xa&quot;,
+    &quot;row_delta&quot;: 3
+  },
+  {
+    &quot;col_delta&quot;: -3,
+    &quot;container_cell&quot;: &quot;b3&quot;,
+    &quot;distance_cells&quot;: 3.0,
+    &quot;episode_index&quot;: 159,
+    &quot;object_cell&quot;: &quot;b6&quot;,
+    &quot;relation&quot;: &quot;trai&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: 3,
+    &quot;container_cell&quot;: &quot;b6&quot;,
+    &quot;distance_cells&quot;: 3.0,
+    &quot;episode_index&quot;: 160,
+    &quot;object_cell&quot;: &quot;b3&quot;,
+    &quot;relation&quot;: &quot;phai&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: 3,
+    &quot;container_cell&quot;: &quot;c4&quot;,
+    &quot;distance_cells&quot;: 3.606,
+    &quot;episode_index&quot;: 161,
+    &quot;object_cell&quot;: &quot;a1&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: 1,
+    &quot;container_cell&quot;: &quot;a7&quot;,
+    &quot;distance_cells&quot;: 3.162,
+    &quot;episode_index&quot;: 162,
+    &quot;object_cell&quot;: &quot;d6&quot;,
+    &quot;relation&quot;: &quot;tren&quot;,
+    &quot;row_delta&quot;: -3
+  },
+  {
+    &quot;col_delta&quot;: -2,
+    &quot;container_cell&quot;: &quot;d4&quot;,
+    &quot;distance_cells&quot;: 2.0,
+    &quot;episode_index&quot;: 163,
+    &quot;object_cell&quot;: &quot;d6&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: -2,
+    &quot;container_cell&quot;: &quot;a1&quot;,
+    &quot;distance_cells&quot;: 2.828,
+    &quot;episode_index&quot;: 164,
+    &quot;object_cell&quot;: &quot;c3&quot;,
+    &quot;relation&quot;: &quot;cheo_vua&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: -3,
+    &quot;container_cell&quot;: &quot;c3&quot;,
+    &quot;distance_cells&quot;: 3.0,
+    &quot;episode_index&quot;: 165,
+    &quot;object_cell&quot;: &quot;c6&quot;,
+    &quot;relation&quot;: &quot;trai&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: -7,
+    &quot;container_cell&quot;: &quot;b2&quot;,
+    &quot;distance_cells&quot;: 7.071,
+    &quot;episode_index&quot;: 166,
+    &quot;object_cell&quot;: &quot;a9&quot;,
+    &quot;relation&quot;: &quot;trai&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: -2,
+    &quot;container_cell&quot;: &quot;b2&quot;,
+    &quot;distance_cells&quot;: 2.828,
+    &quot;episode_index&quot;: 167,
+    &quot;object_cell&quot;: &quot;d4&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: -6,
+    &quot;container_cell&quot;: &quot;a2&quot;,
+    &quot;distance_cells&quot;: 6.0,
+    &quot;episode_index&quot;: 168,
+    &quot;object_cell&quot;: &quot;a8&quot;,
+    &quot;relation&quot;: &quot;trai&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: -2,
+    &quot;container_cell&quot;: &quot;c3&quot;,
+    &quot;distance_cells&quot;: 2.0,
+    &quot;episode_index&quot;: 169,
+    &quot;object_cell&quot;: &quot;c5&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: 1,
+    &quot;container_cell&quot;: &quot;a8&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 170,
+    &quot;object_cell&quot;: &quot;c7&quot;,
+    &quot;relation&quot;: &quot;tren&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: 5,
+    &quot;container_cell&quot;: &quot;a9&quot;,
+    &quot;distance_cells&quot;: 5.385,
+    &quot;episode_index&quot;: 171,
+    &quot;object_cell&quot;: &quot;c4&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: 5,
+    &quot;container_cell&quot;: &quot;d6&quot;,
+    &quot;distance_cells&quot;: 5.831,
+    &quot;episode_index&quot;: 172,
+    &quot;object_cell&quot;: &quot;a1&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: 3
+  },
+  {
+    &quot;col_delta&quot;: -1,
+    &quot;container_cell&quot;: &quot;d6&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 173,
+    &quot;object_cell&quot;: &quot;b7&quot;,
+    &quot;relation&quot;: &quot;duoi&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: 0,
+    &quot;container_cell&quot;: &quot;b6&quot;,
+    &quot;distance_cells&quot;: 2.0,
+    &quot;episode_index&quot;: 174,
+    &quot;object_cell&quot;: &quot;d6&quot;,
+    &quot;relation&quot;: &quot;tren&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: -5,
+    &quot;container_cell&quot;: &quot;b3&quot;,
+    &quot;distance_cells&quot;: 5.0,
+    &quot;episode_index&quot;: 175,
+    &quot;object_cell&quot;: &quot;b8&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;c4&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 176,
+    &quot;object_cell&quot;: &quot;b2&quot;,
+    &quot;relation&quot;: &quot;cheo_gan&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: 5,
+    &quot;container_cell&quot;: &quot;b8&quot;,
+    &quot;distance_cells&quot;: 5.0,
+    &quot;episode_index&quot;: 177,
+    &quot;object_cell&quot;: &quot;b3&quot;,
+    &quot;relation&quot;: &quot;phai&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: 3,
+    &quot;container_cell&quot;: &quot;b7&quot;,
+    &quot;distance_cells&quot;: 3.606,
+    &quot;episode_index&quot;: 178,
+    &quot;object_cell&quot;: &quot;d4&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: -1,
+    &quot;container_cell&quot;: &quot;a2&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 179,
+    &quot;object_cell&quot;: &quot;c3&quot;,
+    &quot;relation&quot;: &quot;tren&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: -2,
+    &quot;container_cell&quot;: &quot;b3&quot;,
+    &quot;distance_cells&quot;: 2.828,
+    &quot;episode_index&quot;: 180,
+    &quot;object_cell&quot;: &quot;d5&quot;,
+    &quot;relation&quot;: &quot;cheo_vua&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: 4,
+    &quot;container_cell&quot;: &quot;b6&quot;,
+    &quot;distance_cells&quot;: 4.123,
+    &quot;episode_index&quot;: 181,
+    &quot;object_cell&quot;: &quot;a2&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: 7,
+    &quot;container_cell&quot;: &quot;a9&quot;,
+    &quot;distance_cells&quot;: 7.0,
+    &quot;episode_index&quot;: 182,
+    &quot;object_cell&quot;: &quot;a2&quot;,
+    &quot;relation&quot;: &quot;phai&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: -1,
+    &quot;container_cell&quot;: &quot;d5&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 183,
+    &quot;object_cell&quot;: &quot;b6&quot;,
+    &quot;relation&quot;: &quot;duoi&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: 1,
+    &quot;container_cell&quot;: &quot;a7&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 184,
+    &quot;object_cell&quot;: &quot;c6&quot;,
+    &quot;relation&quot;: &quot;tren&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;c5&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 185,
+    &quot;object_cell&quot;: &quot;b3&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;b7&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 186,
+    &quot;object_cell&quot;: &quot;c5&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: 1,
+    &quot;container_cell&quot;: &quot;a8&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 187,
+    &quot;object_cell&quot;: &quot;c7&quot;,
+    &quot;relation&quot;: &quot;tren&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: -6,
+    &quot;container_cell&quot;: &quot;a1&quot;,
+    &quot;distance_cells&quot;: 6.0,
+    &quot;episode_index&quot;: 188,
+    &quot;object_cell&quot;: &quot;a7&quot;,
+    &quot;relation&quot;: &quot;random&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: -6,
+    &quot;container_cell&quot;: &quot;a1&quot;,
+    &quot;distance_cells&quot;: 6.083,
+    &quot;episode_index&quot;: 189,
+    &quot;object_cell&quot;: &quot;b7&quot;,
+    &quot;relation&quot;: &quot;xa&quot;,
+    &quot;row_delta&quot;: -1
+  },
+  {
+    &quot;col_delta&quot;: -1,
+    &quot;container_cell&quot;: &quot;c7&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 190,
+    &quot;object_cell&quot;: &quot;a8&quot;,
+    &quot;relation&quot;: &quot;duoi&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: -5,
+    &quot;container_cell&quot;: &quot;c3&quot;,
+    &quot;distance_cells&quot;: 5.099,
+    &quot;episode_index&quot;: 191,
+    &quot;object_cell&quot;: &quot;b8&quot;,
+    &quot;relation&quot;: &quot;trai&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: -1,
+    &quot;container_cell&quot;: &quot;c6&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 192,
+    &quot;object_cell&quot;: &quot;a7&quot;,
+    &quot;relation&quot;: &quot;duoi&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;d5&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 193,
+    &quot;object_cell&quot;: &quot;c3&quot;,
+    &quot;relation&quot;: &quot;gan&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: -3,
+    &quot;container_cell&quot;: &quot;b2&quot;,
+    &quot;distance_cells&quot;: 3.606,
+    &quot;episode_index&quot;: 194,
+    &quot;object_cell&quot;: &quot;d5&quot;,
+    &quot;relation&quot;: &quot;cheo_vua&quot;,
+    &quot;row_delta&quot;: -2
+  },
+  {
+    &quot;col_delta&quot;: -6,
+    &quot;container_cell&quot;: &quot;b3&quot;,
+    &quot;distance_cells&quot;: 6.083,
+    &quot;episode_index&quot;: 195,
+    &quot;object_cell&quot;: &quot;a9&quot;,
+    &quot;relation&quot;: &quot;trai&quot;,
+    &quot;row_delta&quot;: 1
+  },
+  {
+    &quot;col_delta&quot;: -3,
+    &quot;container_cell&quot;: &quot;c4&quot;,
+    &quot;distance_cells&quot;: 3.0,
+    &quot;episode_index&quot;: 196,
+    &quot;object_cell&quot;: &quot;c7&quot;,
+    &quot;relation&quot;: &quot;trai&quot;,
+    &quot;row_delta&quot;: 0
+  },
+  {
+    &quot;col_delta&quot;: 2,
+    &quot;container_cell&quot;: &quot;c3&quot;,
+    &quot;distance_cells&quot;: 2.828,
+    &quot;episode_index&quot;: 197,
+    &quot;object_cell&quot;: &quot;a1&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: 3,
+    &quot;container_cell&quot;: &quot;d5&quot;,
+    &quot;distance_cells&quot;: 3.606,
+    &quot;episode_index&quot;: 198,
+    &quot;object_cell&quot;: &quot;b2&quot;,
+    &quot;relation&quot;: &quot;vua&quot;,
+    &quot;row_delta&quot;: 2
+  },
+  {
+    &quot;col_delta&quot;: -1,
+    &quot;container_cell&quot;: &quot;b3&quot;,
+    &quot;distance_cells&quot;: 2.236,
+    &quot;episode_index&quot;: 199,
+    &quot;object_cell&quot;: &quot;d4&quot;,
+    &quot;relation&quot;: &quot;tren&quot;,
+    &quot;row_delta&quot;: -2
+  }
+]</pre>
+</body>
+</html>

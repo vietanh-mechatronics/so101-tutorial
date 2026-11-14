@@ -1,0 +1,133 @@
+{
+  "env": {
+    "backend": "mujoco_xml",
+    "xml_path": "assets/mujoco/so101/scene_original.xml",
+    "camera_names": {
+      "top": "top_cam",
+      "front": "front_cam"
+    },
+    "image_height": 480,
+    "image_width": 640,
+    "frame_skip": 33,
+    "state_source": "qpos",
+    "clip_actions_to_ctrlrange": true,
+    "qpos_reset_noise_std": 0.0,
+    "matrix_random_placements": {
+      "table_path": "configs/placements/placement_5x9.html",
+      "red_box_body": "pick_box",
+      "container_body": "container_box",
+      "red_box_z": 0.011,
+      "container_z": 0.0,
+      "container_base_center_x": 0.015,
+      "container_base_center_y": 0.0,
+      "container_min_base_distance": 0.18,
+      "container_clearance_samples_per_axis": 101,
+      "red_box_region_margin": 0.025,
+      "red_box_reach_center_x": 0.015,
+      "red_box_reach_center_y": 0.0,
+      "red_box_reach_radius": 0.335,
+      "red_box_max_sample_attempts": 1000,
+      "red_box_random_yaw": true
+    },
+    "seed": 0,
+    "reset_each_episode_seed": true,
+    "max_steps_per_episode": null
+  },
+  "dataset": {
+    "repo_id": "local/so101_sim2real_original",
+    "root": "datasets/so101_sim2real_original",
+    "robot_type": "so_follower",
+    "single_task": "Pick the object and place it into the box.",
+    "fps": 30,
+    "num_episodes": 200,
+    "episode_count_mode": "target_total",
+    "episode_time_s": 30,
+    "use_videos": true,
+    "video_backend": "pyav",
+    "push_to_hub": false,
+    "private": false,
+    "auto_resume_if_root_exists": false,
+    "tags": [
+      "sim",
+      "mujoco",
+      "so101",
+      "sim2real-original",
+      "real-leader",
+      "5x9-real-rule",
+      "clean-camera",
+      "degree",
+      "640x480",
+      "top-camera",
+      "front-camera"
+    ],
+    "streaming_encoding": true,
+    "encoder_threads": 2,
+    "encoder_queue_maxsize": 30,
+    "image_writer_threads": 0
+  },
+  "adapter": {
+    "state_key": "agent_pos",
+    "image_keys": {
+      "top": "pixels.top",
+      "front": "pixels.front"
+    },
+    "dataset_angle_unit": "degree",
+    "feature_value_transforms": {
+      "gripper.pos": {
+        "input_min": -0.17453292519943295,
+        "input_max": 1.7453292519943295,
+        "output_min": 0.0,
+        "output_max": 100.0
+      }
+    },
+    "expected_image_hw": [
+      480,
+      640
+    ],
+    "state_names": [
+      "shoulder_pan.pos",
+      "shoulder_lift.pos",
+      "elbow_flex.pos",
+      "wrist_flex.pos",
+      "wrist_roll.pos",
+      "gripper.pos"
+    ],
+    "action_names": [
+      "shoulder_pan.pos",
+      "shoulder_lift.pos",
+      "elbow_flex.pos",
+      "wrist_flex.pos",
+      "wrist_roll.pos",
+      "gripper.pos"
+    ]
+  },
+  "action_source": {
+    "type": "scripted",
+    "constant": null,
+    "scripted_callable": "real_leader_script:real_leader_action"
+  },
+  "recording": {
+    "sleep_to_fps": true,
+    "control_fps": 30,
+    "prepare_time_s": 5,
+    "rest_time_s": 8,
+    "teleop_during_prepare": true,
+    "teleop_during_rest": true,
+    "require_enter_before_episode": false,
+    "save_partial_episode_on_interrupt": false,
+    "display_camera_preview": true,
+    "preview_window_name": "so101_sim2real_original",
+    "preview_scale": 0.75,
+    "top_grid": {
+      "enabled": true,
+      "rows": 5,
+      "cols": 9,
+      "labels": true,
+      "margin_left": 16,
+      "margin_top": 32,
+      "margin_right": 16,
+      "margin_bottom": 0
+    }
+  },
+  "resume": false
+}

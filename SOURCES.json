@@ -1,0 +1,165 @@
+{
+  "parent_repository": "https://github.com/vietanh-mechatronics/act_policy_sim2real",
+  "parent_commit": "af8226f",
+  "lerobot_revision": "fe1c54594f6ba275fccf210b9f7b11f0e2324b89",
+  "files": {
+    "src/sim_mujoco/__init__.py": {
+      "sha256": "6cefb1f0fa9ee611c8a1d41e4340fca3a1e0db69d6dcd13d4b25eec7215edd7a",
+      "source_path": "src/sim_mujoco/__init__.py",
+      "sha256_upstream": "abf08e516d68cd6629dcccd3f839726bc20b69fc23a9b6662302a308dece335e",
+      "changes": "Line ending / trailing whitespace normalization; obsolete XML comments removed where applicable. Simulation parameters unchanged."
+    },
+    "src/sim_mujoco/baseline/collect_sim_dataset.py": {
+      "sha256": "0cfb6b8445cc193f0bbabae18ddb1c36c2f0b50381052869d8b2f4756e5ca2d2",
+      "source_path": "src/sim_mujoco/baseline/collect_sim_dataset.py",
+      "sha256_upstream": "0cfb6b8445cc193f0bbabae18ddb1c36c2f0b50381052869d8b2f4756e5ca2d2"
+    },
+    "src/sim_mujoco/baseline/top_cam_grid_5x9.py": {
+      "sha256": "282f9305b8a0c08753fa77fb23d1ea288c5d8ed05ee66f811dcd24c2f9dd4af2",
+      "source_path": "src/sim_mujoco/baseline/top_cam_grid_5x9.py",
+      "sha256_upstream": "282f9305b8a0c08753fa77fb23d1ea288c5d8ed05ee66f811dcd24c2f9dd4af2"
+    },
+    "src/sim_mujoco/baseline/action_reference_adapter.py": {
+      "sha256": "776785af60f3f79fb223b6d1fea3ccd2058155e33b4956c009bb76e1e065ceb9",
+      "source_path": "src/sim_mujoco/baseline/action_reference_adapter.py",
+      "sha256_upstream": "776785af60f3f79fb223b6d1fea3ccd2058155e33b4956c009bb76e1e065ceb9"
+    },
+    "src/sim_mujoco/baseline/action_source.py": {
+      "sha256": "006f6d737ea2bb4b14fa5ea9b7bb01e31767a8f31e6c21d720a48fad50ff1791",
+      "source_path": "src/sim_mujoco/baseline/action_source.py",
+      "sha256_upstream": "1e19930b76ae7db0208359c0cb39de02ab56cc439c2b3f4e92ad14d8fa39d2f5",
+      "changes": "Line ending / trailing whitespace normalization; obsolete XML comments removed where applicable. Simulation parameters unchanged."
+    },
+    "src/sim_mujoco/baseline/__init__.py": {
+      "sha256": "6bc3240c90a2da5b65859c9d7bc621c8bbf8942daffef938ab0a8ed930df19d0",
+      "source_path": "src/sim_mujoco/baseline/__init__.py",
+      "sha256_upstream": "fbe2cb34747bc064141bcc85206466676d1cc3de90c3c854dbd3de7f638fce6d",
+      "changes": "Line ending / trailing whitespace normalization; obsolete XML comments removed where applicable. Simulation parameters unchanged."
+    },
+    "src/sim_mujoco/baseline/real_leader_script.py": {
+      "sha256": "0a2aba4f7e7ba0f1e682659cd3e8637761a5f4f4f44c0e556e329570a5377087",
+      "source_path": "src/sim_mujoco/baseline/real_leader_script.py",
+      "sha256_upstream": "0a2aba4f7e7ba0f1e682659cd3e8637761a5f4f4f44c0e556e329570a5377087"
+    },
+    "src/sim_mujoco/baseline/sim_adapter.py": {
+      "sha256": "d3372e435c3d49b2e9142b61b2a7afcd3bbaf009eb3036ec85015fe82ee73748",
+      "source_path": "src/sim_mujoco/baseline/sim_adapter.py",
+      "sha256_upstream": "d3372e435c3d49b2e9142b61b2a7afcd3bbaf009eb3036ec85015fe82ee73748"
+    },
+    "src/sim_mujoco/baseline/mujoco_xml_env.py": {
+      "sha256": "b9acf75c68a8834bb2a70794a0abb026133fa8f2312595490b3b8d46df714e02",
+      "source_path": "src/sim_mujoco/baseline/mujoco_xml_env.py",
+      "sha256_upstream": "b9acf75c68a8834bb2a70794a0abb026133fa8f2312595490b3b8d46df714e02"
+    },
+    "assets/mujoco/so101/scene_original.xml": {
+      "sha256": "bcd8a2ef676ba7ad607d2e16c2373e1903d183d9cc1cd7058f5ecf069de01d5a",
+      "source_path": "assets/mujoco/so101/scene_original.xml",
+      "sha256_upstream": "c9f265730a0acbf8ea4a12e822d6fac8e61d40ea2f5446835731fbde1ff92bd7",
+      "changes": "Line ending / trailing whitespace normalization; obsolete XML comments removed where applicable. Simulation parameters unchanged."
+    },
+    "assets/mujoco/so101/robot_original.xml": {
+      "sha256": "5cd10c3b0cd3b8db9d38b0edf12140e4292da7a00171e903d48da016365862f4",
+      "source_path": "assets/mujoco/so101/robot_original.xml",
+      "sha256_upstream": "957d8fd6f4c18b36d06c17835f761366ea2ea2d963d8ffa848d47963c62c19ba",
+      "changes": "Line ending / trailing whitespace normalization; obsolete XML comments removed where applicable. Simulation parameters unchanged."
+    },
+    "assets/mujoco/so101/CITATION.cff": {
+      "sha256": "357d040c6099ec36765fe5fa22e50db9679b16205aa29b01b765cbc809f2d1b0",
+      "source_path": "assets/mujoco/so101/CITATION.cff",
+      "sha256_upstream": "0b2ca13ebcc1b38bb59c8715b51aecdb0b6a245d5f11276baa79eb240e9966ed",
+      "changes": "Line ending / trailing whitespace normalization; obsolete XML comments removed where applicable. Simulation parameters unchanged."
+    },
+    "assets/mujoco/so101/LICENSE.upstream": {
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "source_path": "assets/mujoco/so101/LICENSE.upstream",
+      "sha256_upstream": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6",
+      "changes": "Line ending / trailing whitespace normalization; obsolete XML comments removed where applicable. Simulation parameters unchanged."
+    },
+    "assets/mujoco/so101/README.upstream.md": {
+      "sha256": "53e458a076818cc00d84b41c4b038062d2bc9e0bb9f50718dadfdf73ed2a46f5",
+      "source_path": "assets/mujoco/so101/README.upstream.md",
+      "sha256_upstream": "7e68c990f967813b8fec2ea4ac7247ae565e4c2f6dd95aaa21ce4cb1138422cb",
+      "changes": "Line ending / trailing whitespace normalization; obsolete XML comments removed where applicable. Simulation parameters unchanged."
+    },
+    "assets/mujoco/so101/assets/sts3215_03a_no_horn_v1.stl": {
+      "sha256": "75ef3781b752e4065891aea855e34dc161a38a549549cd0970cedd07eae6f887",
+      "source_path": "assets/mujoco/so101/assets/sts3215_03a_no_horn_v1.stl",
+      "sha256_upstream": "75ef3781b752e4065891aea855e34dc161a38a549549cd0970cedd07eae6f887"
+    },
+    "assets/mujoco/so101/assets/wrist_roll_pitch_so101_v2.stl": {
+      "sha256": "6c7ec5525b4d8b9e397a30ab4bb0037156a5d5f38a4adf2c7d943d6c56eda5ae",
+      "source_path": "assets/mujoco/so101/assets/wrist_roll_pitch_so101_v2.stl",
+      "sha256_upstream": "6c7ec5525b4d8b9e397a30ab4bb0037156a5d5f38a4adf2c7d943d6c56eda5ae"
+    },
+    "assets/mujoco/so101/assets/upper_arm_so101_v1.stl": {
+      "sha256": "475056e03a17e71919b82fd88ab9a0b898ab50164f2a7943652a6b2941bb2d4f",
+      "source_path": "assets/mujoco/so101/assets/upper_arm_so101_v1.stl",
+      "sha256_upstream": "475056e03a17e71919b82fd88ab9a0b898ab50164f2a7943652a6b2941bb2d4f"
+    },
+    "assets/mujoco/so101/assets/motor_holder_so101_base_v1.stl": {
+      "sha256": "31242ae6fb59d8b15c66617b88ad8e9bded62d57c35d11c0c43a70d2f4caa95b",
+      "source_path": "assets/mujoco/so101/assets/motor_holder_so101_base_v1.stl",
+      "sha256_upstream": "31242ae6fb59d8b15c66617b88ad8e9bded62d57c35d11c0c43a70d2f4caa95b"
+    },
+    "assets/mujoco/so101/assets/rotation_pitch_so101_v1.stl": {
+      "sha256": "9be900cc2a2bf718102841ef82ef8d2873842427648092c8ed2ca1e2ef4ffa34",
+      "source_path": "assets/mujoco/so101/assets/rotation_pitch_so101_v1.stl",
+      "sha256_upstream": "9be900cc2a2bf718102841ef82ef8d2873842427648092c8ed2ca1e2ef4ffa34"
+    },
+    "assets/mujoco/so101/assets/motor_holder_so101_wrist_v1.stl": {
+      "sha256": "887f92e6013cb64ea3a1ab8675e92da1e0beacfd5e001f972523540545e08011",
+      "source_path": "assets/mujoco/so101/assets/motor_holder_so101_wrist_v1.stl",
+      "sha256_upstream": "887f92e6013cb64ea3a1ab8675e92da1e0beacfd5e001f972523540545e08011"
+    },
+    "assets/mujoco/so101/assets/waveshare_mounting_plate_so101_v2.stl": {
+      "sha256": "e197e24005a07d01bbc06a8c42311664eaeda415bf859f68fa247884d0f1a6e9",
+      "source_path": "assets/mujoco/so101/assets/waveshare_mounting_plate_so101_v2.stl",
+      "sha256_upstream": "e197e24005a07d01bbc06a8c42311664eaeda415bf859f68fa247884d0f1a6e9"
+    },
+    "assets/mujoco/so101/assets/sts3215_03a_v1.stl": {
+      "sha256": "a37c871fb502483ab96c256baf457d36f2e97afc9205313d9c5ab275ef941cd0",
+      "source_path": "assets/mujoco/so101/assets/sts3215_03a_v1.stl",
+      "sha256_upstream": "a37c871fb502483ab96c256baf457d36f2e97afc9205313d9c5ab275ef941cd0"
+    },
+    "assets/mujoco/so101/assets/under_arm_so101_v1.stl": {
+      "sha256": "d01d1f2de365651dcad9d6669e94ff87ff7652b5bb2d10752a66a456a86dbc71",
+      "source_path": "assets/mujoco/so101/assets/under_arm_so101_v1.stl",
+      "sha256_upstream": "d01d1f2de365651dcad9d6669e94ff87ff7652b5bb2d10752a66a456a86dbc71"
+    },
+    "assets/mujoco/so101/assets/moving_jaw_so101_v1.stl": {
+      "sha256": "785a9dded2f474bc1d869e0d3dae398a3dcd9c0c345640040472210d2861fa9d",
+      "source_path": "assets/mujoco/so101/assets/moving_jaw_so101_v1.stl",
+      "sha256_upstream": "785a9dded2f474bc1d869e0d3dae398a3dcd9c0c345640040472210d2861fa9d"
+    },
+    "assets/mujoco/so101/assets/wrist_roll_follower_so101_v1.stl": {
+      "sha256": "4b17b410a12d64ec39554abc3e8054d8a97384b2dc4a8d95a5ecb2a93670f5f4",
+      "source_path": "assets/mujoco/so101/assets/wrist_roll_follower_so101_v1.stl",
+      "sha256_upstream": "4b17b410a12d64ec39554abc3e8054d8a97384b2dc4a8d95a5ecb2a93670f5f4"
+    },
+    "assets/mujoco/so101/assets/base_so101_v2.stl": {
+      "sha256": "bb12b7026575e1f70ccc7240051f9d943553bf34e5128537de6cd86fae33924d",
+      "source_path": "assets/mujoco/so101/assets/base_so101_v2.stl",
+      "sha256_upstream": "bb12b7026575e1f70ccc7240051f9d943553bf34e5128537de6cd86fae33924d"
+    },
+    "assets/mujoco/so101/assets/base_motor_holder_so101_v1.stl": {
+      "sha256": "8cd2f241037ea377af1191fffe0dd9d9006beea6dcc48543660ed41647072424",
+      "source_path": "assets/mujoco/so101/assets/base_motor_holder_so101_v1.stl",
+      "sha256_upstream": "8cd2f241037ea377af1191fffe0dd9d9006beea6dcc48543660ed41647072424"
+    },
+    "configs/simulation/original.json": {
+      "sha256": "784433045414c91a2449c0b4f9a0edb1710034464c8b3d7647f71126c0d92d90",
+      "source_path": "configs/simulation/original.json",
+      "sha256_upstream": "784433045414c91a2449c0b4f9a0edb1710034464c8b3d7647f71126c0d92d90"
+    },
+    "configs/dataset/so101_sim2real_dataset_contract.json": {
+      "sha256": "d800b36fe5034da8562b2ff6f7f7c82a3e1c108dc9f34894233954cf97786404",
+      "source_path": "configs/dataset/so101_sim2real_dataset_contract.json",
+      "sha256_upstream": "d800b36fe5034da8562b2ff6f7f7c82a3e1c108dc9f34894233954cf97786404"
+    },
+    "configs/placements/placement_5x9.html": {
+      "sha256": "b1db487a9d27800cfe8e95b50a0c70e2de965ebf4e4128b9502e2a8350ec6c59",
+      "source_path": "configs/placements/placement_5x9.html",
+      "sha256_upstream": "b1db487a9d27800cfe8e95b50a0c70e2de965ebf4e4128b9502e2a8350ec6c59"
+    }
+  }
+}

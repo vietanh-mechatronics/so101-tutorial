@@ -1,0 +1,23 @@
+name: Test tutorial
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  headless:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      MUJOCO_GL: egl
+      PYOPENGL_PLATFORM: egl
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - run: sudo apt-get update && sudo apt-get install -y libegl1 libgl1 libglib2.0-0 ffmpeg
+      - run: uv sync --frozen
+      - run: .venv/bin/python -m unittest discover -s tests -v
+      - run: bash scripts/01_check_setup.sh
+      - run: bash scripts/02_start_sim.sh --headless --seconds 0.1 --no-sleep

@@ -1,0 +1,23 @@
+{
+  "simulation_config": "configs/simulation/original.json",
+  "fps": 30,
+  "seed": 0,
+  "episode_seconds": 30,
+  "num_episodes": 2,
+  "leader": {
+    "port": "/dev/ttyACM0",
+    "id": "my_so101_leader",
+    "calibration_dir": "calibration"
+  },
+  "dataset": {
+    "repo_id": "YOUR_HF_USERNAME/so101-rollout",
+    "root": "data/rollout_demo",
+    "private": true
+  },
+  "policy": {
+    "repo_id": "ngocthuong2212/icra_2026_SIM_ONLY",
+    "revision": "5d9827d9b75ab3aa602bd5fc2aa57acc13f20586",
+    "local_path": "models/icra_2026_SIM_ONLY",
+    "device": "auto"
+  }
+}

@@ -1,0 +1,33 @@
+[project]
+name = "so101-simreal-tutorial"
+version = "0.1.0"
+description = "SO-101 real-leader teleoperation, LeRobotDataset recording and ACT rollout in the act_policy_sim2real MuJoCo scene"
+requires-python = ">=3.12,<3.13"
+license = "Apache-2.0"
+readme = "README.md"
+dependencies = [
+  "lerobot[core_scripts,feetech]",
+  "huggingface-hub>=1.31,<2",
+  "torch==2.11.0",
+  "torchvision==0.26.0",
+  "mujoco==3.9.0",
+  "numpy==2.2.6",
+  "av==15.1.0",
+  "rerun-sdk==0.26.2",
+]
+
+[project.optional-dependencies]
+gui = ["opencv-python==4.13.0.92"]
+
+[tool.uv]
+package = false
+
+[tool.uv.sources]
+lerobot = { git = "https://github.com/huggingface/lerobot.git", rev = "fe1c54594f6ba275fccf210b9f7b11f0e2324b89" }
+torch = { index = "pytorch-cpu" }
+torchvision = { index = "pytorch-cpu" }
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
